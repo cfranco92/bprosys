@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Landing page para catálogo de productos financieros con Next.js, TypeScript, TailwindCSS y Styled Components",
-  "author": "BProSys Team",
+  "author": "cfrancobedoya@gmail.com",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
