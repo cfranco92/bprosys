@@ -1,13 +1,9 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { MainLayoutProps } from '@/models';
 import Header from '@/common/components/Header';
 import Footer from '@/common/components/Footer';
 import { ProductProvider } from '@/context/ProductContext';
-
-interface MainLayoutProps {
-  children: ReactNode;
-}
 
 export const MainLayout = ({ children }: MainLayoutProps) => {
   return (

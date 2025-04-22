@@ -1,107 +1,7 @@
 'use client';
 
-import styled from 'styled-components';
 import Link from 'next/link';
 import { useState } from 'react';
-
-const HeaderContainer = styled.header`
-  background-color: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  position: sticky;
-  top: 0;
-  z-index: 50;
-`;
-
-const NavbarContent = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  max-width: 1280px;
-  margin: 0 auto;
-  
-  @media (min-width: 768px) {
-    padding: 1rem 2rem;
-  }
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-`;
-
-const Logo = styled.div`
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #0056b3;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-`;
-
-const LogoIcon = styled.div`
-  background-color: #0056b3;
-  color: white;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 0.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-`;
-
-const MenuButton = styled.button`
-  display: block;
-  padding: 0.5rem;
-  color: #495057;
-  background: none;
-  border: none;
-  cursor: pointer;
-  
-  @media (min-width: 768px) {
-    display: none;
-  }
-`;
-
-const NavLinks = styled.nav<{ $isOpen: boolean }>`
-  display: ${props => props.$isOpen ? 'flex' : 'none'};
-  flex-direction: column;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background-color: white;
-  padding: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  
-  @media (min-width: 768px) {
-    display: flex;
-    flex-direction: row;
-    position: static;
-    gap: 2rem;
-    padding: 0;
-    box-shadow: none;
-    align-items: center;
-  }
-`;
-
-const NavLink = styled.span`
-  padding: 0.75rem 0;
-  color: #495057;
-  font-weight: 500;
-  border-bottom: 1px solid #e9ecef;
-  display: block;
-  cursor: pointer;
-  
-  &:hover {
-    color: #0056b3;
-  }
-  
-  @media (min-width: 768px) {
-    padding: 0;
-    border-bottom: none;
-  }
-`;
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -111,19 +11,22 @@ export const Header = () => {
   };
 
   return (
-    <HeaderContainer>
-      <NavbarContent>
-        <StyledLink href="/">
-          <Logo aria-label="BProSys - Inicio">
-            <LogoIcon>B</LogoIcon>
+    <header className="bg-white shadow-sm sticky top-0 z-50">
+      <div className="flex justify-between items-center p-4 md:p-4 md:px-8 max-w-7xl mx-auto">
+        <Link href="/" className="no-underline">
+          <div className="text-2xl font-bold text-[#0056b3] flex items-center gap-2">
+            <div className="bg-[#0056b3] text-white w-8 h-8 rounded flex items-center justify-center font-extrabold">
+              B
+            </div>
             BProSys
-          </Logo>
-        </StyledLink>
+          </div>
+        </Link>
         
-        <MenuButton 
+        <button 
           onClick={toggleMenu}
           aria-expanded={isMenuOpen}
           aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+          className="block md:hidden p-2 text-gray-600 bg-transparent border-none cursor-pointer"
         >
           <svg 
             width="24" 
@@ -148,24 +51,32 @@ export const Header = () => {
               />
             )}
           </svg>
-        </MenuButton>
+        </button>
         
-        <NavLinks $isOpen={isMenuOpen}>
-          <StyledLink href="/">
-            <NavLink>Inicio</NavLink>
-          </StyledLink>
-          <StyledLink href="/#productos">
-            <NavLink>Productos</NavLink>
-          </StyledLink>
-          <StyledLink href="/#nosotros">
-            <NavLink>Nosotros</NavLink>
-          </StyledLink>
-          <StyledLink href="/#contacto">
-            <NavLink>Contacto</NavLink>
-          </StyledLink>
-        </NavLinks>
-      </NavbarContent>
-    </HeaderContainer>
+        <nav className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row absolute md:static top-full left-0 right-0 bg-white md:bg-transparent p-4 md:p-0 shadow-md md:shadow-none md:gap-8 md:items-center`}>
+          <Link href="/" className="no-underline">
+            <span className="py-3 md:py-0 text-gray-600 font-medium border-b md:border-b-0 border-gray-200 block hover:text-[#0056b3] cursor-pointer">
+              Inicio
+            </span>
+          </Link>
+          <Link href="/#productos" className="no-underline">
+            <span className="py-3 md:py-0 text-gray-600 font-medium border-b md:border-b-0 border-gray-200 block hover:text-[#0056b3] cursor-pointer">
+              Productos
+            </span>
+          </Link>
+          <Link href="/#nosotros" className="no-underline">
+            <span className="py-3 md:py-0 text-gray-600 font-medium border-b md:border-b-0 border-gray-200 block hover:text-[#0056b3] cursor-pointer">
+              Nosotros
+            </span>
+          </Link>
+          <Link href="/#contacto" className="no-underline">
+            <span className="py-3 md:py-0 text-gray-600 font-medium border-b md:border-b-0 border-gray-200 block hover:text-[#0056b3] cursor-pointer">
+              Contacto
+            </span>
+          </Link>
+        </nav>
+      </div>
+    </header>
   );
 };
 

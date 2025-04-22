@@ -2,13 +2,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { ProductCategory } from '@/types';
-
-interface CategoryTabsProps {
-  categories: ProductCategory[];
-  selectedCategory: ProductCategory | 'all';
-  onSelectCategory: (category: ProductCategory | 'all') => void;
-}
+import { CategoryTabsProps } from '@/models';
 
 const TabContainer = styled.div`
   display: flex;
@@ -58,9 +52,8 @@ const Tab = styled.button<{ $active: boolean }>`
   }
 `;
 
-const getDisplayName = (category: ProductCategory | 'all'): string => {
+const getDisplayName = (category: string): string => {
   if (category === 'all') return 'Todos';
-  
   
   return category.charAt(0).toUpperCase() + category.slice(1);
 };

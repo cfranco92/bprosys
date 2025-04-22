@@ -1,35 +1,14 @@
 'use client';
 
-import Image, { ImageProps } from 'next/image';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import styled from 'styled-components';
-
-interface ImageWithFallbackProps extends Omit<ImageProps, 'onError'> {
-  fallbackSrc?: string;
-}
-
-const PlaceholderContainer = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #9e9e9e;
-  font-size: 0.875rem;
-`;
-
-const PlaceholderText = styled.div`
-  padding: 1rem;
-  text-align: center;
-`;
-
+import { ImageWithFallbackProps } from '@/models';
 
 export const ImageWithFallback = ({
   src,
   alt,
   fallbackSrc = '/images/products/fondo-inversion.jpg',
+  className,
   ...rest
 }: ImageWithFallbackProps) => {
   const [imgSrc, setImgSrc] = useState<string | null>(null);
@@ -55,9 +34,14 @@ export const ImageWithFallback = ({
 
   if (!imgSrc || error) {
     return (
-      <PlaceholderContainer data-testid="image-placeholder">
-        <PlaceholderText>{alt || 'Imagen no disponible'}</PlaceholderText>
-      </PlaceholderContainer>
+      <div 
+        className="relative w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center text-gray-500 text-sm"
+        data-testid="image-placeholder"
+      >
+        <div className="p-4 text-center">
+          {alt || 'Imagen no disponible'}
+        </div>
+      </div>
     );
   }
 
@@ -66,6 +50,7 @@ export const ImageWithFallback = ({
       {...rest}
       src={imgSrc}
       alt={alt}
+      className={className}
       onError={handleError}
     />
   );

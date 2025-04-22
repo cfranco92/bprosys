@@ -1,4 +1,4 @@
-import { FinancialProduct } from "@/types";
+import { FinancialProduct } from "@/models";
 import { mockProducts } from "@/data/mock-products";
 
 export const getProducts = async (): Promise<FinancialProduct[]> => {

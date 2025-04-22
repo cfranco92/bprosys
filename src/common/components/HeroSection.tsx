@@ -1,131 +1,43 @@
 'use client';
 
-import styled from 'styled-components';
 import { Button } from '@/common/styled-components/Button';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
-
-const HeroContainer = styled.section`
-  background: linear-gradient(135deg, #0056b3 0%, #003580 100%);
-  color: white;
-  padding: 4rem 1rem;
-  
-  @media (min-width: 768px) {
-    padding: 6rem 2rem;
-  }
-`;
-
-const HeroContent = styled.div`
-  max-width: 1280px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  
-  @media (min-width: 1024px) {
-    flex-direction: row;
-    align-items: center;
-  }
-`;
-
-const HeroText = styled.div`
-  flex: 1;
-  
-  @media (min-width: 1024px) {
-    max-width: 50%;
-  }
-`;
-
-const HeroTitle = styled.h1`
-  font-size: 2.5rem;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
-  
-  @media (min-width: 768px) {
-    font-size: 3.5rem;
-  }
-`;
-
-const HeroSubtitle = styled.p`
-  font-size: 1.125rem;
-  margin-bottom: 2rem;
-  opacity: 0.9;
-  line-height: 1.6;
-  
-  @media (min-width: 768px) {
-    font-size: 1.25rem;
-  }
-`;
-
-const ButtonGroup = styled.div`
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-`;
-
-const HeroImage = styled.div`
-  flex: 1;
-  position: relative;
-  height: 400px;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-`;
-
-const StyledButton = styled(Button)`
-  display: inline-flex;
-`;
-
-const ContactButton = styled(Button)`
-  display: inline-flex;
-  background-color: rgba(255, 255, 255, 0.15);
-  color: white;
-  border: 2px solid white;
-  
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.25);
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
-  }
-`;
 
 export const HeroSection = () => {
   const [imageLoading, setImageLoading] = useState(true);
   const [imageError, setImageError] = useState(false);
   
   return (
-    <HeroContainer>
-      <HeroContent>
-        <HeroText>
-          <HeroTitle>
+    <section className="bg-gradient-to-br from-[#0056b3] to-[#003580] text-white py-16 md:py-24 px-4 md:px-8">
+      <div className="max-w-7xl mx-auto flex flex-col gap-8 lg:flex-row lg:items-center">
+        <div className="flex-1 lg:max-w-[50%]">
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
             Soluciones financieras para un futuro sin límites
-          </HeroTitle>
-          <HeroSubtitle>
+          </h1>
+          <p className="text-lg md:text-xl mb-8 opacity-90 leading-relaxed">
             Descubre nuestros productos financieros diseñados para impulsar tus metas personales y empresariales con la tecnología más avanzada del mercado.
-          </HeroSubtitle>
-          <ButtonGroup>
-            <StyledLink href="#productos">
-              <StyledButton size="large">
+          </p>
+          <div className="flex gap-4 flex-wrap">
+            <Link href="#productos" className="no-underline">
+              <Button size="large">
                 Ver productos
-              </StyledButton>
-            </StyledLink>
-            <StyledLink href="#contacto">
-              <ContactButton size="large">
+              </Button>
+            </Link>
+            <Link href="#contacto" className="no-underline">
+              <Button 
+                size="large" 
+                variant="outline"
+                className="bg-white/15 text-white border-2 border-white hover:bg-white/25 focus:shadow-[0_0_0_3px_rgba(255,255,255,0.4)]"
+              >
                 Contactar asesor
-              </ContactButton>
-            </StyledLink>
-          </ButtonGroup>
-        </HeroText>
+              </Button>
+            </Link>
+          </div>
+        </div>
         
-        <HeroImage>
+        <div className="flex-1 relative rounded-2xl overflow-hidden shadow-2xl" style={{ height: '400px', minHeight: '400px' }}>
           <Image
             src="/images/hero-image.jpg"
             alt="Tecnología financiera de última generación"
@@ -152,9 +64,9 @@ export const HeroSection = () => {
               </div>
             </div>
           )}
-        </HeroImage>
-      </HeroContent>
-    </HeroContainer>
+        </div>
+      </div>
+    </section>
   );
 };
 

@@ -1,4 +1,4 @@
-import { FinancialProduct } from '../types';
+import { FinancialProduct } from '../models';
 
 export const mockProducts: FinancialProduct[] = [
   {
@@ -16,6 +16,7 @@ export const mockProducts: FinancialProduct[] = [
     ],
     imageUrl: '/images/products/cuenta-digital.jpg',
     monthlyFee: 0,
+    performance: [1.5, 1.6, 1.4, 1.5, 1.7, 1.5],
   },
   {
     id: '2',
@@ -32,6 +33,7 @@ export const mockProducts: FinancialProduct[] = [
     ],
     imageUrl: '/images/products/tarjeta-credito.jpg',
     annualFee: 120,
+    performance: [1.2, 1.8, 2.1, 1.9, 2.3, 2.5],
   },
   {
     id: '3',
@@ -64,6 +66,7 @@ export const mockProducts: FinancialProduct[] = [
     ],
     imageUrl: '/images/products/seguro.jpg',
     monthlyFee: 45,
+    performance: [3.2, 3.5, 3.3, 3.6, 3.8, 4.0],
   },
   {
     id: '5',
@@ -80,6 +83,7 @@ export const mockProducts: FinancialProduct[] = [
     ],
     imageUrl: '/images/products/hipoteca.jpg',
     term: 'Hasta 30 años',
+    performance: [3.8, 3.7, 3.6, 3.5, 3.4, 3.3],
   },
   {
     id: '6',
@@ -112,6 +116,7 @@ export const mockProducts: FinancialProduct[] = [
     ],
     imageUrl: '/images/products/tarjeta-credito.jpg',
     annualFee: 350,
+    performance: [2.2, 2.5, 2.7, 2.9, 3.1, 3.3],
   },
   {
     id: '8',
@@ -145,6 +150,7 @@ export const mockProducts: FinancialProduct[] = [
     ],
     imageUrl: '/images/products/prestamo-personal.jpg',
     term: '1-5 años',
+    performance: [8.0, 7.8, 8.2, 7.6, 7.9, 8.1],
   },
   {
     id: '10',
@@ -160,6 +166,7 @@ export const mockProducts: FinancialProduct[] = [
     ],
     imageUrl: '/images/products/seguro-hogar.jpg',
     monthlyFee: 28,
+    performance: [2.5, 2.8, 3.0, 3.2, 3.5, 3.7],
   },
   {
     id: '11',
@@ -176,6 +183,7 @@ export const mockProducts: FinancialProduct[] = [
     ],
     imageUrl: '/images/products/cuenta-digital.jpg',
     monthlyFee: 0,
+    performance: [1.7, 1.8, 1.9, 1.8, 2.0, 2.1],
   },
   {
     id: '12',

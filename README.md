@@ -23,6 +23,103 @@ A modern landing page for a fintech company showcasing a catalog of financial pr
 - **Charts**: [Chart.js](https://www.chartjs.org/) v4.4.9 and [react-chartjs-2](https://react-chartjs-2.js.org/) v5.3.0
 - **React**: v19.0.0
 
+## 🎨 Styling Approach: Tailwind CSS + Styled Components
+
+We use a hybrid styling approach that combines the advantages of both **Tailwind CSS** and **styled-components**.
+
+### When to use each technology
+
+#### Tailwind CSS for:
+
+- **Basic layouts**: Containers, grids, flexbox, spacing, and positioning
+- **Simple visual utilities**: Margins, padding, background colors, basic borders
+- **Responsive design**: Media queries through breakpoint prefixes like `md:`, `lg:`
+- **Elements without state logic**: Static components without complex variants
+
+```jsx
+// Example of using Tailwind for layouts
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+  {items.map(item => (
+    <ItemCard key={item.id} item={item} />
+  ))}
+</div>
+```
+
+#### Styled Components for:
+
+- **Reusable UI components**: Buttons, cards, badges, tabs
+- **Components with variants**: Elements that change appearance based on props
+- **Components with complex styling logic**: Styles dependent on multiple conditions
+- **Design abstractions**: Components that encapsulate behavior and style
+
+```jsx
+// Example of a reusable component with styled-components
+const Button = styled.button<{ $variant: 'primary' | 'secondary' }>`
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  
+  ${props => props.$variant === 'primary' 
+    ? `background-color: blue; color: white;` 
+    : `background-color: gray; color: black;`
+  }
+`;
+```
+
+### Reusable Components
+
+We've created several reusable components in the `src/common/styled-components/` folder:
+
+- **Button**: Button with variants (primary, secondary, outline)
+- **Card**: Card with optional header, body, and footer
+- **Badge**: Label for categories or states
+- **InfoRow**: Information rows with label and value
+- **Section**: Container for page sections
+- **ImageWithFallback**: Image component with fallback
+- **CategoryTabs**: Tabs for category filtering
+
+### Usage Principles
+
+1. **Don't duplicate styles**: Prefer reusing existing styled components
+2. **Visual consistency**: Use reusable components to maintain coherence
+3. **Maintain separation of concerns**:
+   - Use Tailwind for structure and spacing
+   - Use styled-components for behaviors and variants
+4. **Adopt established patterns**: Follow patterns from existing components
+
+### Practical Example: Product Component
+
+```jsx
+// Using both approaches in a component
+import Card from '@/common/styled-components/Card';
+import Badge from '@/common/styled-components/Badge';
+
+const ProductComponent = ({ product }) => (
+  <div className="p-4 md:p-6"> {/* Tailwind for spacing */}
+    <Badge variant="success" rounded> {/* styled-component for badge */}
+      {product.category}
+    </Badge>
+    
+    <h3 className="text-xl font-semibold my-3"> {/* Tailwind for typography */}
+      {product.name}
+    </h3>
+    
+    <Card> {/* styled-component for card */}
+      <Card.Body>
+        {/* Content... */}
+      </Card.Body>
+    </Card>
+  </div>
+);
+```
+
+### Migration and Maintenance
+
+As we evolve the codebase:
+
+1. New components should follow the hybrid approach described here
+2. When refactoring existing components, migrate to this model
+3. Keep documentation of reusable components updated
+
 ## 🚦 Installation and Usage
 
 ### Prerequisites

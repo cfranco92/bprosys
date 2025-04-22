@@ -1,34 +1,60 @@
 'use client';
 
-import { createContext, useContext, ReactNode } from 'react';
-import { FinancialProduct, ProductCategory } from '@/types';
-import { useProducts } from '@/hooks/useProducts';
-
-interface ProductContextType {
-  products: FinancialProduct[];
-  categories: ProductCategory[];
-  selectedCategory: ProductCategory | 'all';
-  setSelectedCategory: (category: ProductCategory | 'all') => void;
-  getProductById: (id: string) => FinancialProduct | undefined;
-}
+import { createContext, useState, useContext, useEffect, ReactNode } from 'react';
+import { FinancialProduct, ProductCategory, ProductContextType } from '@/models';
+import { getProducts } from '@/services/api';
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
 export const ProductProvider = ({ children }: { children: ReactNode }) => {
-  const productData = useProducts();
+  const [products, setProducts] = useState<FinancialProduct[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<ProductCategory | 'all'>('all');
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const data = await getProducts();
+        setProducts(data);
+      } catch (error) {
+        console.error('Error loading products:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    loadProducts();
+  }, []);
+  
+  const filteredProducts = selectedCategory === 'all'
+    ? products
+    : products.filter(product => product.category === selectedCategory);
+  
+  const categories = Array.from(
+    new Set(products.map(product => product.category))
+  );
   
   return (
-    <ProductContext.Provider value={productData}>
+    <ProductContext.Provider
+      value={{
+        products,
+        selectedCategory,
+        setSelectedCategory,
+        filteredProducts,
+        categories,
+        loading
+      }}
+    >
       {children}
     </ProductContext.Provider>
   );
 };
 
-export const useProductContext = (): ProductContextType => {
+export const useProducts = (): ProductContextType => {
   const context = useContext(ProductContext);
   
   if (context === undefined) {
-    throw new Error('useProductContext debe usarse dentro de un ProductProvider');
+    throw new Error('useProducts must be used within a ProductProvider');
   }
   
   return context;

@@ -6,10 +6,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import styled from 'styled-components';
 
-import { FinancialProduct } from '@/types';
+import { ProductDetailProps } from '@/models';
 import { Button } from '@/common/styled-components/Button';
+import Badge from '@/common/styled-components/Badge';
+import InfoRow from '@/common/styled-components/InfoRow';
 
 const Chart = dynamic(
   () => import('react-chartjs-2').then((mod) => mod.Line),
@@ -25,185 +26,26 @@ const Chart = dynamic(
   }
 );
 
-interface ProductDetailProps {
-  product: FinancialProduct;
-}
-
-const DetailContainer = styled.div`
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  
-  @media (min-width: 768px) {
-    padding: 3rem 2rem;
-  }
-`;
-
-const BackLink = styled(Link)`
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #6c757d;
-  margin-bottom: 1.5rem;
-  
-  &:hover {
-    color: #0056b3;
-  }
-`;
-
-const ProductHeader = styled.div`
-  margin-bottom: 2rem;
-`;
-
-const CategoryLabel = styled.span`
-  display: inline-block;
-  background-color: #e9ecef;
-  color: #495057;
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
-  margin-bottom: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-`;
-
-const ProductTitle = styled.h1`
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #212529;
-  margin-bottom: 0.5rem;
-  
-  @media (min-width: 768px) {
-    font-size: 3rem;
-  }
-`;
-
-const ProductType = styled.div`
-  font-size: 1.125rem;
-  color: #6c757d;
-  margin-bottom: 1.5rem;
-`;
-
-const ProductImage = styled.div`
-  position: relative;
-  width: 100%;
-  height: 300px;
-  border-radius: 1rem;
-  overflow: hidden;
-  margin-bottom: 2rem;
-  
-  @media (min-width: 768px) {
-    height: 400px;
-  }
-`;
-
-const ContentLayout = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  
-  @media (min-width: 1024px) {
-    grid-template-columns: 2fr 1fr;
-  }
-`;
-
-const MainContent = styled.div`
-  
-`;
-
-const Description = styled.div`
-  font-size: 1.125rem;
-  line-height: 1.7;
-  color: #343a40;
-  margin-bottom: 2rem;
-`;
-
-const SideContent = styled.div`
-  background-color: #f8f9fa;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  height: fit-content;
-`;
-
-const InfoCard = styled.div`
-  background-color: white;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-`;
-
-const InfoTitle = styled.h3`
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #212529;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-`;
-
-const InfoList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-`;
-
-const InfoItem = styled.li`
-  display: flex;
-  justify-content: space-between;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid #e9ecef;
-  
-  &:last-child {
-    border-bottom: none;
-  }
-`;
-
-const InfoLabel = styled.span`
-  color: #6c757d;
-`;
-
-const InfoValue = styled.span`
-  font-weight: 600;
-  color: #212529;
-`;
-
-const BenefitsList = styled.ul`
-  padding-left: 1.5rem;
-  margin-bottom: 2.5rem;
-`;
-
-const BenefitItem = styled.li`
-  margin-bottom: 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  
-  &::marker {
-    color: #0056b3;
-  }
-`;
-
-const ChartContainer = styled.div`
-  margin-top: 2rem;
-  background-color: white;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-`;
-
-const ChartTitle = styled.h3`
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #212529;
-  margin-bottom: 1.5rem;
-`;
-
 const formatCategoryName = (category: string): string => {
   return category.charAt(0).toUpperCase() + category.slice(1);
+};
+
+const getPerformanceTitle = (category: string): string => {
+  switch(category) {
+    case 'fondo':
+    case 'inversión':
+      return 'Rendimiento histórico';
+    case 'cuenta':
+      return 'Interés acumulado';
+    case 'tarjeta':
+      return 'Beneficios mensuales';
+    case 'préstamo':
+      return 'Comparativa de tasas';
+    case 'seguro':
+      return 'Índice de satisfacción';
+    default:
+      return 'Rendimiento histórico';
+  }
 };
 
 export const ProductDetail = ({ product }: ProductDetailProps) => {
@@ -230,7 +72,7 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
     labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
     datasets: [
       {
-        label: 'Rendimiento (%)',
+        label: `${getPerformanceTitle(category)} (%)`,
         data: Array.isArray(performance) ? performance : [0, 0, 0, 0, 0, 0],
         borderColor: '#0056b3',
         backgroundColor: 'rgba(0, 86, 179, 0.1)',
@@ -265,21 +107,27 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
   };
 
   return (
-    <DetailContainer>
-      <BackLink href="/">
+    <div className="max-w-7xl mx-auto px-4 md:px-8 py-8 md:py-12">
+      <Link href="/" className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 mb-6 hover:text-blue-700">
         <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
         </svg>
         Volver al catálogo
-      </BackLink>
+      </Link>
       
-      <ProductHeader>
-        <CategoryLabel>{formatCategoryName(category)}</CategoryLabel>
-        <ProductTitle>{name}</ProductTitle>
-        <ProductType>{type}</ProductType>
-      </ProductHeader>
+      <div className="mb-8">
+        <Badge rounded className="uppercase mb-3 tracking-wider">
+          {formatCategoryName(category)}
+        </Badge>
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
+          {name}
+        </h1>
+        <div className="text-lg text-gray-600 mb-6">
+          {type}
+        </div>
+      </div>
       
-      <ProductImage>
+      <div className="relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden mb-8">
         <Image
           src={imageUrl}
           alt={name}
@@ -306,102 +154,122 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
             </div>
           </div>
         )}
-      </ProductImage>
+      </div>
       
-      <ContentLayout>
-        <MainContent>
-          <Description>{description}</Description>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2">
+          <div className="text-lg leading-relaxed text-gray-800 mb-8">
+            {description}
+          </div>
           
           <h2 className="text-xl font-semibold mb-4">Beneficios principales</h2>
-          <BenefitsList>
-            {benefits.map((benefit, index) => (
-              <BenefitItem key={index}>{benefit}</BenefitItem>
+          <ul className="pl-6 mb-10 list-disc marker:text-blue-700">
+            {benefits.map((benefit: string, index: number) => (
+              <li key={index} className="mb-3 leading-relaxed">
+                {benefit}
+              </li>
             ))}
-          </BenefitsList>
+          </ul>
           
           {performance && performance.length > 0 ? (
-            <ChartContainer>
-              <ChartTitle>Rendimiento histórico</ChartTitle>
+            <div className="mt-8 bg-white rounded-2xl p-6 shadow-sm">
+              <h3 className="text-xl font-semibold text-gray-800 mb-6">
+                {getPerformanceTitle(category)}
+              </h3>
               <Chart data={chartData} options={chartOptions} />
-            </ChartContainer>
+              
+              <div className="mt-4 pt-4 border-t border-gray-100 text-sm text-gray-500">
+                <p>Los datos mostrados corresponden a los últimos 6 meses. El rendimiento pasado no garantiza resultados futuros.</p>
+              </div>
+            </div>
           ) : (
             <div className="mt-4 p-4 bg-gray-100 rounded-lg">
               <p className="text-gray-600">Este producto no tiene datos de rendimiento histórico.</p>
             </div>
           )}
-        </MainContent>
+        </div>
         
-        <SideContent>
-          <InfoCard>
-            <InfoTitle>
-              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              Información clave
-            </InfoTitle>
-            <InfoList>
-              {interestRate !== undefined && (
-                <InfoItem>
-                  <InfoLabel>Tasa de interés</InfoLabel>
-                  <InfoValue>{interestRate}%</InfoValue>
-                </InfoItem>
-              )}
-              {riskLevel && (
-                <InfoItem>
-                  <InfoLabel>Nivel de riesgo</InfoLabel>
-                  <InfoValue className={`
-                    ${riskLevel === 'bajo' ? 'text-green-600' : ''}
-                    ${riskLevel === 'medio' ? 'text-orange-500' : ''}
-                    ${riskLevel === 'alto' ? 'text-red-600' : ''}
-                  `}>
-                    {riskLevel.charAt(0).toUpperCase() + riskLevel.slice(1)}
-                  </InfoValue>
-                </InfoItem>
-              )}
-              {minAmount && (
-                <InfoItem>
-                  <InfoLabel>Inversión mínima</InfoLabel>
-                  <InfoValue>${minAmount.toLocaleString()}</InfoValue>
-                </InfoItem>
-              )}
-              {term && (
-                <InfoItem>
-                  <InfoLabel>Plazo</InfoLabel>
-                  <InfoValue>{term}</InfoValue>
-                </InfoItem>
-              )}
-              {monthlyFee !== undefined && (
-                <InfoItem>
-                  <InfoLabel>Cuota mensual</InfoLabel>
-                  <InfoValue>${monthlyFee.toLocaleString()}</InfoValue>
-                </InfoItem>
-              )}
-              {annualFee !== undefined && (
-                <InfoItem>
-                  <InfoLabel>Cuota anual</InfoLabel>
-                  <InfoValue>${annualFee.toLocaleString()}</InfoValue>
-                </InfoItem>
-              )}
-            </InfoList>
-          </InfoCard>
-          
-          <Button fullWidth size="large">
-            Solicitar este producto
-          </Button>
-          
-          <div className="mt-4">
-            <Button variant="secondary" fullWidth>
-              Hablar con un asesor
+        <div>
+          <div className="bg-gray-100 rounded-2xl p-6 sticky top-24">
+            <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
+              <div className="flex items-center gap-2 text-lg font-semibold text-gray-800 mb-4">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Información clave
+              </div>
+              
+              <div className="space-y-1">
+                {interestRate !== undefined && (
+                  <InfoRow
+                    label="Tasa de interés"
+                    value={`${interestRate}%`}
+                  />
+                )}
+                
+                {riskLevel && (
+                  <InfoRow
+                    label="Nivel de riesgo"
+                    value={
+                      <span className={`
+                        ${riskLevel === 'bajo' ? 'text-green-600' : ''}
+                        ${riskLevel === 'medio' ? 'text-orange-500' : ''}
+                        ${riskLevel === 'alto' ? 'text-red-600' : ''}
+                      `}>
+                        {riskLevel.charAt(0).toUpperCase() + riskLevel.slice(1)}
+                      </span>
+                    }
+                  />
+                )}
+                
+                {minAmount && (
+                  <InfoRow
+                    label="Inversión mínima"
+                    value={`$${minAmount.toLocaleString()}`}
+                  />
+                )}
+                
+                {term && (
+                  <InfoRow
+                    label="Plazo"
+                    value={term}
+                  />
+                )}
+                
+                {monthlyFee !== undefined && (
+                  <InfoRow
+                    label="Cuota mensual"
+                    value={`$${monthlyFee.toLocaleString()}`}
+                  />
+                )}
+                
+                {annualFee !== undefined && (
+                  <InfoRow
+                    label="Cuota anual"
+                    value={`$${annualFee.toLocaleString()}`}
+                  />
+                )}
+              </div>
+            </div>
+            
+            <Button fullWidth size="large">
+              Solicitar este producto
             </Button>
+            
+            <div className="mt-4">
+              <Button variant="secondary" fullWidth>
+                Hablar con un asesor
+              </Button>
+            </div>
+            
+            <div className="mt-8 text-sm text-gray-500 text-center">
+              <p>¿Necesitas más información?</p>
+              <p className="mt-1">Llámanos al 900 123 456</p>
+            </div>
           </div>
-          
-          <div className="mt-8 text-sm text-gray-500 text-center">
-            <p>¿Necesitas más información?</p>
-            <p className="mt-1">Llámanos al 900 123 456</p>
-          </div>
-        </SideContent>
-      </ContentLayout>
-    </DetailContainer>
+        </div>
+      </div>
+    </div>
   );
 };
 
