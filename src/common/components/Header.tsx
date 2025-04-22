@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
+import { MenuIcon, CloseIcon } from "./icons";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,21 +38,9 @@ export const Header = () => {
           className="block md:hidden p-2 text-gray-600 bg-transparent border-none cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0056b3] focus-visible:ring-offset-2 rounded-md"
         >
           {isMenuOpen ? (
-            <Image
-              src="/svgs/close.svg"
-              alt=""
-              width={24}
-              height={24}
-              aria-hidden="true"
-            />
+            <CloseIcon width={24} height={24} />
           ) : (
-            <Image
-              src="/svgs/menu.svg"
-              alt=""
-              width={24}
-              height={24}
-              aria-hidden="true"
-            />
+            <MenuIcon width={24} height={24} />
           )}
         </button>
 

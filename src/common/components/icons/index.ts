@@ -4,4 +4,6 @@ export { default as AccessibilityIcon } from './AccessibilityIcon';
 export { default as PhoneIcon } from './PhoneIcon';
 export { default as EmailIcon } from './EmailIcon';
 export { default as LocationIcon } from './LocationIcon';
-export { default as ArrowLeftIcon } from './ArrowLeftIcon'; 
+export { default as ArrowLeftIcon } from './ArrowLeftIcon';
+export { default as MenuIcon } from './MenuIcon';
+export { default as CloseIcon } from './CloseIcon'; 
