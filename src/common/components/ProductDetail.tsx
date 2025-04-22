@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import { ArrowLeftIcon } from "./icons";
 
 import { ProductDetailProps } from "@/types";
 import { Button, Badge } from "@/common/styled-components";
@@ -21,13 +21,7 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
           href="/"
           className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 mb-6 hover:text-blue-700"
         >
-          <Image 
-            src="/svgs/arrow-left.svg" 
-            alt="" 
-            width={16} 
-            height={16}
-            aria-hidden="true"
-          />
+          <ArrowLeftIcon />
           <span>Volver al catálogo</span>
         </Link>
       </nav>

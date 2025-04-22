@@ -1,7 +1,7 @@
 "use client";
 
 import Section from "@/common/styled-components/Section";
-import Image from "next/image";
+import { InnovationIcon, TransparencyIcon, AccessibilityIcon } from "./icons";
 
 export const AboutSection = () => {
   return (
@@ -54,12 +54,7 @@ export const AboutSection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="bg-white p-8 rounded-lg shadow-md flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center mb-6 text-blue-700">
-              <Image
-                src="/svgs/innovation.svg"
-                alt="Icono de Innovación"
-                width={32}
-                height={32}
-              />
+              <InnovationIcon />
             </div>
             <h4 className="text-xl font-semibold text-gray-800 mb-4">
               Innovación
@@ -73,12 +68,7 @@ export const AboutSection = () => {
 
           <div className="bg-white p-8 rounded-lg shadow-md flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center mb-6 text-blue-700">
-              <Image
-                src="/svgs/transparency.svg"
-                alt="Icono de Transparencia"
-                width={32}
-                height={32}
-              />
+              <TransparencyIcon />
             </div>
             <h4 className="text-xl font-semibold text-gray-800 mb-4">
               Transparencia
@@ -92,12 +82,7 @@ export const AboutSection = () => {
 
           <div className="bg-white p-8 rounded-lg shadow-md flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center mb-6 text-blue-700">
-              <Image
-                src="/svgs/accessibility.svg"
-                alt="Icono de Accesibilidad"
-                width={32}
-                height={32}
-              />
+              <AccessibilityIcon />
             </div>
             <h4 className="text-xl font-semibold text-gray-800 mb-4">
               Accesibilidad

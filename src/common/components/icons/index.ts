@@ -1,0 +1,7 @@
+export { default as InnovationIcon } from './InnovationIcon';
+export { default as TransparencyIcon } from './TransparencyIcon';
+export { default as AccessibilityIcon } from './AccessibilityIcon';
+export { default as PhoneIcon } from './PhoneIcon';
+export { default as EmailIcon } from './EmailIcon';
+export { default as LocationIcon } from './LocationIcon';
+export { default as ArrowLeftIcon } from './ArrowLeftIcon'; 

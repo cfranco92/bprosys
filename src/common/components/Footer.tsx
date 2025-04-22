@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import { PhoneIcon, EmailIcon, LocationIcon } from "./icons";
 
 export const Footer = () => {
   return (
@@ -20,33 +20,15 @@ export const Footer = () => {
               </p>
               <div className="mt-6">
                 <div className="flex items-center gap-2 mb-3 text-gray-600">
-                  <Image
-                    src="/svgs/phone.svg"
-                    alt="Teléfono"
-                    width={20}
-                    height={20}
-                    className="text-current"
-                  />
+                  <PhoneIcon />
                   <span>900 123 456</span>
                 </div>
                 <div className="flex items-center gap-2 mb-3 text-gray-600">
-                  <Image
-                    src="/svgs/email.svg"
-                    alt="Email"
-                    width={20}
-                    height={20}
-                    className="text-current"
-                  />
+                  <EmailIcon />
                   <span>contacto@bprosys.com</span>
                 </div>
                 <div className="flex items-center gap-2 mb-3 text-gray-600">
-                  <Image
-                    src="/svgs/location.svg"
-                    alt="Ubicación"
-                    width={20}
-                    height={20}
-                    className="text-current"
-                  />
+                  <LocationIcon />
                   <span>Av. Principal 123, Ciudad Financiera</span>
                 </div>
               </div>
