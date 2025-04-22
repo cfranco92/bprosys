@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { FinancialProduct, ProductCategory } from '../types';
+import { FinancialProduct, ProductCategory } from '@/models';
 import { mockProducts } from '../data/mock-products';
 
 export const useProducts = () => {
