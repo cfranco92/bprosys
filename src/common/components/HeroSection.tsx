@@ -28,8 +28,7 @@ export const HeroSection = () => {
             <Link href="#contacto" className="no-underline">
               <Button 
                 size="large" 
-                variant="outline"
-                className="bg-white/15 text-white border-2 border-white hover:bg-white/25 focus:shadow-[0_0_0_3px_rgba(255,255,255,0.4)]"
+                variant="white-outline"
               >
                 Contactar asesor
               </Button>

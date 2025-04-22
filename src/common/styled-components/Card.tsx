@@ -6,7 +6,7 @@ import { CardProps, CardBodyProps } from '@/models';
 const StyledCard = styled.div<{ $interactive?: boolean }>`
   background-color: white;
   border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   overflow: hidden;
   transition: all 0.2s ease;
   height: 100%;
@@ -14,7 +14,7 @@ const StyledCard = styled.div<{ $interactive?: boolean }>`
   ${props => props.$interactive && `
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
   `}
 `;

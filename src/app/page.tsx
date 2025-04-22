@@ -1,7 +1,4 @@
-import MainLayout from '@/common/components/templates/MainLayout';
-import HeroSection from '@/common/components/HeroSection';
-import ProductsSection from '@/common/components/ProductsSection';
-import AboutSection from '@/common/components/AboutSection';
+import { MainLayout, HeroSection, ProductsSection, AboutSection } from '@/common/components';
 import Link from 'next/link';
 
 export default function Home() {

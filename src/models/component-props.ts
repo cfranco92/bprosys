@@ -17,7 +17,7 @@ export interface SectionProps {
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  variant?: 'primary' | 'secondary' | 'outline';
+  variant?: 'primary' | 'secondary' | 'outline' | 'white-outline';
   size?: 'small' | 'medium' | 'large';
   fullWidth?: boolean;
   className?: string;
@@ -55,6 +55,10 @@ export interface ProductCardProps {
 }
 
 export interface ProductDetailProps {
+  product: FinancialProduct;
+}
+
+export interface ProductInfoProps {
   product: FinancialProduct;
 }
 

@@ -1,8 +1,7 @@
 'use client';
 
-import ProductCard from '@/common/components/ProductCard';
-import CategoryTabs from '@/common/styled-components/CategoryTabs';
-import Section from '@/common/styled-components/Section';
+import { ProductCard } from '@/common/components';
+import { CategoryTabs, Section } from '@/common/styled-components';
 import { useProducts } from '@/hooks/useProducts';
 import { ProductCategory } from '@/models';
 

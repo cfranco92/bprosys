@@ -1,23 +1,22 @@
 'use client';
 
-import styled from 'styled-components';
 import { forwardRef } from 'react';
+import styled from 'styled-components';
 import { ButtonProps } from '@/models';
 
-const StyledButton = styled.button<{
-  $variant: string;
-  $size: string;
-  $fullWidth: boolean;
+const StyledButton = styled.button<{ 
+  $variant: string; 
+  $size: string; 
+  $fullWidth: boolean 
 }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-weight: 500;
   border-radius: 0.375rem;
-  cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
-  width: ${props => (props.$fullWidth ? '100%' : 'auto')};
+  width: ${props => props.$fullWidth ? '100%' : 'auto'};
   
   ${props => {
     switch (props.$size) {
@@ -41,19 +40,37 @@ const StyledButton = styled.button<{
   
   ${props => {
     switch (props.$variant) {
+      case 'primary':
+        return `
+          background-color: #0056b3;
+          color: white;
+          
+          &:hover:not(:disabled) {
+            background-color: #004494;
+          }
+          
+          &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #0056b3;
+          }
+          
+          &:disabled {
+            background-color: #a3c4e7;
+            cursor: not-allowed;
+          }
+        `;
       case 'secondary':
         return `
           background-color: #e5e7eb;
           color: #1f2937;
-          border: none;
           
-          &:hover {
+          &:hover:not(:disabled) {
             background-color: #d1d5db;
           }
           
           &:focus {
-            box-shadow: 0 0 0 3px rgba(209, 213, 219, 0.5);
             outline: none;
+            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #9ca3af;
           }
         `;
       case 'outline':
@@ -62,35 +79,32 @@ const StyledButton = styled.button<{
           color: #0056b3;
           border: 1px solid #0056b3;
           
-          &:hover {
+          &:hover:not(:disabled) {
             background-color: rgba(0, 86, 179, 0.04);
           }
           
           &:focus {
-            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.25);
             outline: none;
+            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #0056b3;
           }
         `;
-      default:
+      case 'white-outline':
         return `
-          background-color: #0056b3;
+          background-color: rgba(255, 255, 255, 0.15);
           color: white;
-          border: none;
+          border: 2px solid white;
           
-          &:hover {
-            background-color: #004494;
+          &:hover:not(:disabled) {
+            background-color: rgba(255, 255, 255, 0.25);
           }
           
           &:focus {
-            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.4);
             outline: none;
-          }
-          
-          &:disabled {
-            background-color: #a3c4e7;
-            cursor: not-allowed;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
           }
         `;
+      default:
+        return '';
     }
   }}
 `;

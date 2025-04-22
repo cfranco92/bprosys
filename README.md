@@ -183,15 +183,41 @@ bprosys/
 │   │   └── product/      # Dynamic product detail route
 │   ├── common/           # Shared components
 │   │   ├── components/   # Page/functional components
-│   │   │   └── templates/# Page templates
+│   │   │   ├── templates/# Page templates
+│   │   │   ├── ProductCard.tsx       # Product card component
+│   │   │   ├── ProductDetail.tsx     # Product detail component
+│   │   │   ├── ProductChart.tsx      # Chart component for products
+│   │   │   ├── ProductImage.tsx      # Image component with loading states
+│   │   │   ├── ProductInfo.tsx       # Product information component
+│   │   │   ├── ProductsSection.tsx   # Products grid with filters
+│   │   │   ├── HeroSection.tsx       # Hero section component
+│   │   │   ├── AboutSection.tsx      # About section component
+│   │   │   ├── Header.tsx            # Header component
+│   │   │   └── Footer.tsx            # Footer component
 │   │   └── styled-components/ # Reusable UI components
+│   │       ├── Button.tsx     # Button component with variants
+│   │       ├── Card.tsx       # Card component
+│   │       ├── Badge.tsx      # Badge component
+│   │       ├── InfoRow.tsx    # Information row component
+│   │       ├── Section.tsx    # Section container component
+│   │       └── CategoryTabs.tsx # Category tabs component
 │   ├── hooks/            # Custom React hooks
+│   │   ├── useProducts.ts      # Hook for product filtering
+│   │   ├── useChartData.ts     # Hook for chart data
+│   │   ├── useImageLoader.ts   # Hook for image loading states
+│   │   └── index.ts            # Hooks barrel file
 │   ├── models/           # TypeScript type definitions
+│   │   ├── domain-types.ts     # Domain-specific types
+│   │   ├── entities.ts         # Entity interfaces
+│   │   ├── component-props.ts  # Component props interfaces
+│   │   ├── context-types.ts    # Context types
+│   │   ├── charts.ts           # Chart-related types
+│   │   ├── image.ts            # Image-related types
+│   │   └── index.ts            # Types barrel file
 │   ├── services/         # External services integration
-│   ├── context/          # React context providers
-│   ├── constants/        # Application constants
-│   ├── providers/        # React providers configuration
-│   └── data/             # Mock data for development
+│   ├── data/             # Mock data for development
+│   └── constants/        # Application constants
+├── tailwind.config.js    # Tailwind CSS configuration
 ├── next.config.ts        # Next.js configuration
 ├── postcss.config.mjs    # PostCSS configuration
 ├── eslint.config.mjs     # ESLint configuration

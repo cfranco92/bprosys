@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation';
-import MainLayout from '@/common/components/templates/MainLayout';
-import ProductDetail from '@/common/components/ProductDetail';
+import { MainLayout, ProductDetail } from '@/common/components';
 import { getProductById, getProducts } from '@/services/api';
 
 export async function generateStaticParams() {
