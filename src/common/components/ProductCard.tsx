@@ -1,7 +1,7 @@
 'use client';
 
-import { FinancialProduct } from '@/lib/types';
-import Card from '@/components/ui/Card';
+import { FinancialProduct } from '@/types';
+import Card from '@/common/styled-components/Card';
 import styled from 'styled-components';
 import Link from 'next/link';
 import Image from 'next/image';

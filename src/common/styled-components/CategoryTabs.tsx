@@ -1,7 +1,8 @@
 'use client';
 
+import React from 'react';
 import styled from 'styled-components';
-import { ProductCategory } from '@/lib/types';
+import { ProductCategory } from '@/types';
 
 interface CategoryTabsProps {
   categories: ProductCategory[];

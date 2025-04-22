@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import ProductDetail from '@/components/ProductDetail';
-import { mockProducts } from '@/lib/data/mock-products';
+import Header from '@/common/components/Header';
+import Footer from '@/common/components/Footer';
+import ProductDetail from '@/common/components/ProductDetail';
+import { mockProducts } from '@/data/mock-products';
 
 
 export async function generateStaticParams() {

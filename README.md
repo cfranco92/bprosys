@@ -17,16 +17,17 @@ A modern landing page for a fintech company showcasing a catalog of financial pr
 
 ## 🛠️ Technologies
 
-- **Framework**: [Next.js](https://nextjs.org/) (App Router)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [TailwindCSS](https://tailwindcss.com/) + [Styled Components](https://styled-components.com/)
-- **Charts**: [Chart.js](https://www.chartjs.org/) and [react-chartjs-2](https://react-chartjs-2.js.org/)
+- **Framework**: [Next.js](https://nextjs.org/) (App Router) v15.3.1
+- **Language**: [TypeScript](https://www.typescriptlang.org/) v5
+- **Styling**: [TailwindCSS](https://tailwindcss.com/) v4 + [Styled Components](https://styled-components.com/) v6.1.17
+- **Charts**: [Chart.js](https://www.chartjs.org/) v4.4.9 and [react-chartjs-2](https://react-chartjs-2.js.org/) v5.3.0
+- **React**: v19.0.0
 
 ## 🚦 Installation and Usage
 
 ### Prerequisites
 
-- Node.js 16.8 or higher
+- Node.js 16.8 or higher (as specified in package.json engines)
 - npm or yarn
 
 ### Installation Steps
@@ -72,25 +73,45 @@ A modern landing page for a fintech company showcasing a catalog of financial pr
 
 ## 📋 Project Structure
 
+### Current Structure
+
 ```
 bprosys/
 ├── public/               # Static files
-│   └── images/           # Images
 ├── src/
 │   ├── app/              # Next.js App Router routes
 │   │   ├── page.tsx      # Main page
 │   │   ├── layout.tsx    # Main layout
-│   │   └── product/[id]/ # Dynamic product detail route
-│   ├── components/       # React components
-│   │   ├── ui/           # Reusable UI components
-│   │   └── ...           # Other components
-│   └── lib/              # Utilities and business logic
-│       ├── data/         # Mock data
-│       ├── hooks/        # Custom hooks
-│       └── types/        # Type definitions
+│   │   ├── globals.css   # Global styles
+│   │   ├── not-found.tsx # 404 page
+│   │   └── product/      # Dynamic product detail route
+│   ├── common/           # Shared components
+│   │   ├── components/   # Page/functional components
+│   │   │   └── templates/# Page templates
+│   │   └── styled-components/ # Reusable UI components
+│   ├── hooks/            # Custom React hooks
+│   ├── types/            # TypeScript type definitions
+│   ├── services/         # External services integration
+│   ├── utils/            # Utility functions
+│   ├── context/          # React context providers
+│   ├── constants/        # Application constants
+│   ├── providers/        # React providers configuration
+│   └── data/             # Mock data for development
 ├── next.config.ts        # Next.js configuration
+├── postcss.config.mjs    # PostCSS configuration
+├── eslint.config.mjs     # ESLint configuration
 └── package.json          # Dependencies and scripts
 ```
+
+### Structure Implementation (Clean Architecture)
+
+The proposed structure has been implemented, reorganizing the code following Clean Architecture principles:
+
+1. **Separation of concerns**: Each folder has a clear and defined purpose.
+2. **Framework independence**: Business logic is separated from UI components.
+3. **Improved testability**: By separating layers, it's easier to test each one in isolation.
+4. **Better scalability**: Makes project growth easier without increasing complexity.
+5. **Improved maintainability**: Clear organization makes it easier for developers to find and modify code.
 
 ## 🤔 Complementary Questions
 

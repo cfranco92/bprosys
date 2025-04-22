@@ -1,7 +1,7 @@
 'use client';
 
 import styled from 'styled-components';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/common/styled-components/Button';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';

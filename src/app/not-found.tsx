@@ -1,10 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { Button } from '@/components/ui/Button';
 import styled from 'styled-components';
+import Header from '@/common/components/Header';
+import Footer from '@/common/components/Footer';
+import { Button } from '@/common/styled-components/Button';
 
 const NotFoundContainer = styled.div`
   max-width: 1280px;

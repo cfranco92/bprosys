@@ -1,10 +1,10 @@
 'use client';
 
 import styled from 'styled-components';
-import ProductCard from '@/components/ProductCard';
-import CategoryTabs from '@/components/ui/CategoryTabs';
-import { useProducts } from '@/lib/hooks/useProducts';
-import { ProductCategory } from '@/lib/types';
+import ProductCard from '@/common/components/ProductCard';
+import CategoryTabs from '@/common/styled-components/CategoryTabs';
+import { useProducts } from '@/hooks/useProducts';
+import { ProductCategory } from '@/types';
 
 const SectionContainer = styled.section`
   padding: 4rem 1rem;

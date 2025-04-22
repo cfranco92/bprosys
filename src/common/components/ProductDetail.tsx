@@ -1,8 +1,8 @@
 'use client';
 
 import styled from 'styled-components';
-import { FinancialProduct } from '@/lib/types';
-import { Button } from '@/components/ui/Button';
+import { FinancialProduct } from '@/types';
+import { Button } from '@/common/styled-components/Button';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
