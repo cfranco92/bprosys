@@ -236,7 +236,7 @@ bprosys/
 │       └── mock-products.ts    # Mock product data
 ├── tailwind.config.ts    # Tailwind CSS configuration
 ├── next.config.ts        # Next.js configuration
-├── postcss.config.mjs    # PostCSS configuration
+├── postcss.config.ts     # PostCSS configuration
 ├── eslint.config.mjs     # ESLint configuration
 └── package.json          # Dependencies and scripts
 ```
