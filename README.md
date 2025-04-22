@@ -234,7 +234,7 @@ bprosys/
 │   │   └── index.ts            # Utils barrel file
 │   └── data/             # Mock data for development
 │       └── mock-products.ts    # Mock product data
-├── tailwind.config.ts    # Tailwind CSS configuration
+├── tailwind.config.js    # Tailwind CSS configuration
 ├── next.config.ts        # Next.js configuration
 ├── postcss.config.mjs    # PostCSS configuration
 ├── eslint.config.mjs     # ESLint configuration
