@@ -29,7 +29,7 @@ const PlaceholderText = styled.div`
 export const ImageWithFallback = ({
   src,
   alt,
-  fallbackSrc = '/images/products/placeholder.jpg',
+  fallbackSrc = '/images/products/fondo-inversion.jpg',
   ...rest
 }: ImageWithFallbackProps) => {
   const [imgSrc, setImgSrc] = useState<string | null>(null);

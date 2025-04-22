@@ -9,85 +9,59 @@ interface CategoryTabsProps {
   onSelectCategory: (category: ProductCategory | 'all') => void;
 }
 
-const TabsContainer = styled.div`
+const TabContainer = styled.div`
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
   gap: 0.5rem;
-  padding: 0.5rem 0 1.5rem 0;
-  margin-bottom: 2rem;
-  
-  @media (min-width: 768px) {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+  padding: 0.5rem 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   
   &::-webkit-scrollbar {
-    height: 4px;
+    display: none;
   }
-  
-  &::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-  }
-  
-  &::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
-    border-radius: 10px;
-  }
-  
-  &::-webkit-scrollbar-thumb:hover {
-    background: #a1a1a1;
+
+  @media (min-width: 640px) {
+    gap: 1rem;
   }
 `;
 
-interface TabProps {
-  active: boolean;
-}
-
-const Tab = styled.button<TabProps>`
+const Tab = styled.button<{ $active: boolean }>`
   padding: 0.75rem 1.25rem;
   border-radius: 2rem;
-  background-color: ${props => props.active ? '#0056b3' : '#e9ecef'};
-  color: ${props => props.active ? 'white' : '#495057'};
-  font-weight: 600;
-  font-size: 0.875rem;
-  border: none;
-  cursor: pointer;
+  font-weight: 500;
   white-space: nowrap;
   transition: all 0.2s ease;
-  
-  &:hover {
-    background-color: ${props => props.active ? '#003d82' : '#dee2e6'};
+  outline: none;
+
+  ${props => props.$active
+    ? `
+      background-color: #0056b3;
+      color: white;
+      box-shadow: 0 4px 6px rgba(0, 86, 179, 0.25);
+    `
+    : `
+      background-color: #f8f9fa;
+      color: #495057;
+      border: 1px solid #dee2e6;
+      
+      &:hover {
+        background-color: #e9ecef;
+      }
+    `
   }
-  
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.25);
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.4);
   }
 `;
 
-const formatCategoryName = (category: string): string => {
-  const formattedCategory = category.charAt(0).toUpperCase() + category.slice(1);
+const getDisplayName = (category: ProductCategory | 'all'): string => {
+  if (category === 'all') return 'Todos';
   
-  switch (category) {
-    case 'préstamo':
-      return 'Préstamos';
-    case 'inversión':
-      return 'Inversiones';
-    case 'tarjeta':
-      return 'Tarjetas';
-    case 'cuenta':
-      return 'Cuentas';
-    case 'fondo':
-      return 'Fondos';
-    case 'seguro':
-      return 'Seguros';
-    case 'all':
-      return 'Todos';
-    default:
-      return formattedCategory;
-  }
+  
+  return category.charAt(0).toUpperCase() + category.slice(1);
 };
 
 export const CategoryTabs = ({ 
@@ -96,10 +70,13 @@ export const CategoryTabs = ({
   onSelectCategory 
 }: CategoryTabsProps) => {
   return (
-    <TabsContainer>
-      <Tab 
-        active={selectedCategory === 'all'}
+    <TabContainer className="mb-6">
+      <Tab
+        $active={selectedCategory === 'all'}
         onClick={() => onSelectCategory('all')}
+        aria-label="Ver todos los productos"
+        aria-selected={selectedCategory === 'all'}
+        role="tab"
       >
         Todos
       </Tab>
@@ -107,13 +84,16 @@ export const CategoryTabs = ({
       {categories.map((category) => (
         <Tab
           key={category}
-          active={selectedCategory === category}
+          $active={selectedCategory === category}
           onClick={() => onSelectCategory(category)}
+          aria-label={`Ver productos de categoría ${getDisplayName(category)}`}
+          aria-selected={selectedCategory === category}
+          role="tab"
         >
-          {formatCategoryName(category)}
+          {getDisplayName(category)}
         </Tab>
       ))}
-    </TabsContainer>
+    </TabContainer>
   );
 };
 

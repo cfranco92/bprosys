@@ -7,29 +7,6 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useState } from 'react';
-import { FaArrowLeft, FaChartLine, FaShieldAlt, FaRegClock, FaPercent } from 'react-icons/fa';
-import { Line } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  ChartOptions
-} from 'chart.js';
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
 
 const Chart = dynamic(() => import('react-chartjs-2').then(mod => mod.Line), {
   ssr: false,
@@ -216,24 +193,7 @@ const ChartTitle = styled.h3`
 `;
 
 const formatCategoryName = (category: string): string => {
-  const formattedCategory = category.charAt(0).toUpperCase() + category.slice(1);
-  
-  switch (category) {
-    case 'préstamo':
-      return 'Préstamo';
-    case 'inversión':
-      return 'Inversión';
-    case 'tarjeta':
-      return 'Tarjeta';
-    case 'cuenta':
-      return 'Cuenta';
-    case 'fondo':
-      return 'Fondo';
-    case 'seguro':
-      return 'Seguro';
-    default:
-      return formattedCategory;
-  }
+  return category.charAt(0).toUpperCase() + category.slice(1);
 };
 
 export const ProductDetail = ({ product }: ProductDetailProps) => {
@@ -270,44 +230,37 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
     ],
   };
   
-  const chartOptions: ChartOptions<'line'> = {
+  const chartOptions = {
     responsive: true,
+    maintainAspectRatio: true,
     plugins: {
       legend: {
+        display: true,
         position: 'top' as const,
       },
-      title: {
-        display: false,
+      tooltip: {
+        mode: 'index' as const,
+        intersect: false,
       },
     },
     scales: {
       y: {
         ticks: {
-          callback: function(value) {
+          callback: function(value: number | string) {
             return value + '%';
-          }
-        }
-      }
-    }
-  };
-
-  const performanceData = performance && {
-    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
-    datasets: [
-      {
-        label: 'Rendimiento (%)',
-        data: performance,
-        borderColor: '#0056b3',
-        backgroundColor: 'rgba(0, 86, 179, 0.5)',
-        tension: 0.3,
-      }
-    ],
+          },
+        },
+      },
+    },
   };
 
   return (
     <DetailContainer>
       <BackLink href="/">
-        <FaArrowLeft size={14} /> Volver a productos
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Volver al catálogo
       </BackLink>
       
       <ProductHeader>
@@ -356,10 +309,10 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
             ))}
           </BenefitsList>
           
-          {performanceData && (
+          {performance && performance.length > 0 && (
             <ChartContainer>
               <ChartTitle>Rendimiento histórico</ChartTitle>
-              <Line options={chartOptions} data={performanceData} />
+              <Chart data={chartData} options={chartOptions} />
             </ChartContainer>
           )}
         </MainContent>
