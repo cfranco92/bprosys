@@ -22,6 +22,7 @@ A modern landing page for a fintech company showcasing a catalog of financial pr
 - **Styling**: [TailwindCSS](https://tailwindcss.com/) v4 + [Styled Components](https://styled-components.com/) v6.1.17
 - **Charts**: [Chart.js](https://www.chartjs.org/) v4.4.9 and [react-chartjs-2](https://react-chartjs-2.js.org/) v5.3.0
 - **React**: v19.0.0
+- **Utility**: [tailwind-merge](https://github.com/dcastil/tailwind-merge) v3.2.0
 
 ## 🎨 Styling Approach: Tailwind CSS + Styled Components
 
@@ -215,7 +216,10 @@ bprosys/
 │   │   ├── image.ts            # Image-related types
 │   │   └── index.ts            # Types barrel file
 │   ├── services/         # External services integration
+│   │   ├── products.ts         # Product-related services
+│   │   └── index.ts            # Services barrel file
 │   └── data/             # Mock data for development
+│       └── mock-products.ts    # Mock product data
 ├── tailwind.config.js    # Tailwind CSS configuration
 ├── next.config.ts        # Next.js configuration
 ├── postcss.config.mjs    # PostCSS configuration

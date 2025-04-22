@@ -1,4 +1,4 @@
-import { FinancialProduct } from "../models";
+import { FinancialProduct } from "../types";
 
 export const mockProducts: FinancialProduct[] = [
   {

@@ -1,6 +1,5 @@
 "use client";
 
-import "chart.js/auto";
 import Link from "next/link";
 
 import { ProductDetailProps } from "@/types";

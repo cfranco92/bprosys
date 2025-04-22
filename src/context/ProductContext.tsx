@@ -8,7 +8,7 @@ import {
   ReactNode,
 } from "react";
 import { FinancialProduct, ProductCategory, ProductContextType } from "@/types";
-import { getProducts } from "@/services/api";
+import { getProducts } from "@/services";
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 

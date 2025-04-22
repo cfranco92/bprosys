@@ -1,4 +1,3 @@
-
 export type ChartDataPoint = number;
 
 export type ChartLegendPosition =
@@ -46,6 +45,11 @@ export interface UseChartDataResult {
       y: {
         ticks: {
           callback: (value: number | string) => string;
+        };
+      };
+      x?: {
+        grid?: {
+          display?: boolean;
         };
       };
     };

@@ -4,20 +4,20 @@ export function useChartData({
   category,
   performance = [],
 }: UseChartDataProps): UseChartDataResult {
-  
-  const labels = Array.from({ length: 12 }, (_, i) => {
+  // Limitar a los últimos 6 meses para las etiquetas
+  const labels = Array.from({ length: 6 }, (_, i) => {
     const date = new Date();
-    date.setMonth(date.getMonth() - (11 - i));
+    date.setMonth(date.getMonth() - (5 - i));
     return date.toLocaleDateString("es-ES", { month: "short" });
   });
 
-  
+  // Usar los datos de rendimiento proporcionados o generar datos aleatorios
+  // Asegurarnos de limitar a 6 elementos para mantener consistencia con las etiquetas
   const data =
     performance.length > 0
-      ? performance
-      : Array.from({ length: 12 }, () => Math.floor(Math.random() * 100));
+      ? performance.slice(0, 6)
+      : Array.from({ length: 6 }, () => Math.floor(Math.random() * 100));
 
-  
   const getChartTitle = (category: string): string => {
     switch (category.toLowerCase()) {
       case "fondo":
@@ -37,7 +37,6 @@ export function useChartData({
     }
   };
 
-  
   const borderColor = "rgb(53, 162, 235)";
   const backgroundColor = "rgba(53, 162, 235, 0.5)";
 
@@ -72,6 +71,11 @@ export function useChartData({
         y: {
           ticks: {
             callback: (value) => `$${value}`,
+          },
+        },
+        x: {
+          grid: {
+            display: false,
           },
         },
       },

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { MainLayout, ProductDetail } from "@/common/components";
-import { getProductById, getProducts } from "@/services/api";
+import { getProductById, getProducts } from "@/services";
 
 export async function generateStaticParams() {
   const products = await getProducts();
