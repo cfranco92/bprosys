@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 import { ProductDetailProps } from "@/types";
 import { Button, Badge } from "@/common/styled-components";
@@ -20,21 +21,13 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
           href="/"
           className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 mb-6 hover:text-blue-700"
         >
-          <svg
-            width="16"
-            height="16"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+          <Image 
+            src="/svgs/arrow-left.svg" 
+            alt="" 
+            width={16} 
+            height={16}
             aria-hidden="true"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"
-            />
-          </svg>
+          />
           <span>Volver al catálogo</span>
         </Link>
       </nav>

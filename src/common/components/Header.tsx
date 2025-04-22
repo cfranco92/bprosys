@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 export const Header = () => {
@@ -36,30 +37,23 @@ export const Header = () => {
           aria-controls="main-navigation"
           className="block md:hidden p-2 text-gray-600 bg-transparent border-none cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0056b3] focus-visible:ring-offset-2 rounded-md"
         >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            {isMenuOpen ? (
-              <path
-                d="M6 18L18 6M6 6L18 18"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            ) : (
-              <path
-                d="M4 6H20M4 12H20M4 18H20"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            )}
-          </svg>
+          {isMenuOpen ? (
+            <Image
+              src="/svgs/close.svg"
+              alt=""
+              width={24}
+              height={24}
+              aria-hidden="true"
+            />
+          ) : (
+            <Image
+              src="/svgs/menu.svg"
+              alt=""
+              width={24}
+              height={24}
+              aria-hidden="true"
+            />
+          )}
         </button>
 
         <nav
