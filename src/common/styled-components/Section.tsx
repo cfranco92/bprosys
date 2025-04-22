@@ -1,5 +1,6 @@
 'use client';
 
+import styled from 'styled-components';
 import { ReactNode } from 'react';
 
 interface SectionProps {
@@ -10,6 +11,43 @@ interface SectionProps {
   className?: string;
 }
 
+const SectionContainer = styled.section`
+  padding: 4rem 1rem;
+  
+  @media (min-width: 768px) {
+    padding: 5rem 2rem;
+  }
+`;
+
+const SectionContent = styled.div`
+  max-width: 80rem;
+  margin: 0 auto;
+`;
+
+const SectionHeader = styled.div`
+  text-align: center;
+  margin-bottom: 2rem;
+`;
+
+const SectionTitle = styled.h2`
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  
+  @media (min-width: 768px) {
+    font-size: 2.25rem;
+  }
+`;
+
+const SectionDescription = styled.p`
+  font-size: 1.125rem;
+  color: #6b7280;
+  max-width: 48rem;
+  margin: 0 auto;
+  line-height: 1.625;
+`;
+
 export const Section = ({
   id,
   title,
@@ -18,22 +56,18 @@ export const Section = ({
   className = ''
 }: SectionProps) => {
   return (
-    <section id={id} className={`py-16 md:py-20 px-4 md:px-8 ${className}`}>
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-            {title}
-          </h2>
+    <SectionContainer id={id} className={className}>
+      <SectionContent>
+        <SectionHeader>
+          <SectionTitle>{title}</SectionTitle>
           {description && (
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              {description}
-            </p>
+            <SectionDescription>{description}</SectionDescription>
           )}
-        </div>
+        </SectionHeader>
         
         {children}
-      </div>
-    </section>
+      </SectionContent>
+    </SectionContainer>
   );
 };
 

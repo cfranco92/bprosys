@@ -74,7 +74,6 @@ We've created several reusable components in the `src/common/styled-components/`
 - **Badge**: Label for categories or states
 - **InfoRow**: Information rows with label and value
 - **Section**: Container for page sections
-- **ImageWithFallback**: Image component with fallback
 - **CategoryTabs**: Tabs for category filtering
 
 ### Usage Principles
@@ -187,9 +186,8 @@ bprosys/
 │   │   │   └── templates/# Page templates
 │   │   └── styled-components/ # Reusable UI components
 │   ├── hooks/            # Custom React hooks
-│   ├── types/            # TypeScript type definitions
+│   ├── models/           # TypeScript type definitions
 │   ├── services/         # External services integration
-│   ├── utils/            # Utility functions
 │   ├── context/          # React context providers
 │   ├── constants/        # Application constants
 │   ├── providers/        # React providers configuration

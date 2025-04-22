@@ -4,7 +4,7 @@ import ProductCard from '@/common/components/ProductCard';
 import CategoryTabs from '@/common/styled-components/CategoryTabs';
 import Section from '@/common/styled-components/Section';
 import { useProducts } from '@/hooks/useProducts';
-import { ProductCategory } from '@/types';
+import { ProductCategory } from '@/models';
 
 export const ProductsSection = () => {
   const { 

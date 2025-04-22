@@ -10,6 +10,7 @@ const TabContainer = styled.div`
   overflow-x: auto;
   gap: 0.5rem;
   padding: 0.5rem 0;
+  margin-bottom: 1.5rem;
   scrollbar-width: none;
   -ms-overflow-style: none;
   
@@ -64,7 +65,7 @@ export const CategoryTabs = ({
   onSelectCategory 
 }: CategoryTabsProps) => {
   return (
-    <TabContainer className="mb-6">
+    <TabContainer>
       <Tab
         $active={selectedCategory === 'all'}
         onClick={() => onSelectCategory('all')}

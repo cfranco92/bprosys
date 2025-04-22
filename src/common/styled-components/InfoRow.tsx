@@ -7,20 +7,27 @@ const Row = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 0;
+  border-bottom: 1px solid #e5e7eb;
+  
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 
-const Label = styled.div`
+const Label = styled.dt`
   color: #6b7280;
-  font-size: 0.875rem;
-`;
-
-const Value = styled.div`
-  color: #1f2937;
   font-weight: 500;
-  text-align: right;
 `;
 
-export const InfoRow = ({ label, value, className = '' }: InfoRowProps) => {
+const Value = styled.dd`
+  color: #1f2937;
+`;
+
+export const InfoRow = ({ 
+  label, 
+  value,
+  className = ''
+}: InfoRowProps) => {
   return (
     <Row className={className}>
       <Label>{label}</Label>

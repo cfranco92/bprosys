@@ -31,7 +31,7 @@ const StyledButton = styled.button<{
           padding: 0.75rem 1.5rem;
           font-size: 1rem;
         `;
-      default: // medium
+      default:
         return `
           padding: 0.5rem 1rem;
           font-size: 0.875rem;
@@ -71,7 +71,7 @@ const StyledButton = styled.button<{
             outline: none;
           }
         `;
-      default: // primary
+      default:
         return `
           background-color: #0056b3;
           color: white;
