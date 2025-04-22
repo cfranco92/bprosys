@@ -20,12 +20,12 @@ export const HeroSection = () => {
             Descubre nuestros productos financieros diseñados para impulsar tus metas personales y empresariales con la tecnología más avanzada del mercado.
           </p>
           <div className="flex gap-4 flex-wrap">
-            <Link href="#productos" className="no-underline">
+            <Link href="#productos" className="no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded">
               <Button size="large">
                 Ver productos
               </Button>
             </Link>
-            <Link href="#contacto" className="no-underline">
+            <Link href="#contacto" className="no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded">
               <Button 
                 size="large" 
                 variant="white-outline"
@@ -36,10 +36,10 @@ export const HeroSection = () => {
           </div>
         </div>
         
-        <div className="flex-1 relative rounded-2xl overflow-hidden shadow-2xl" style={{ height: '400px', minHeight: '400px' }}>
+        <div className="flex-1 relative rounded-2xl overflow-hidden shadow-2xl" style={{ height: '400px', minHeight: '400px' }} aria-hidden={imageError}>
           <Image
             src="/images/hero-image.jpg"
-            alt="Tecnología financiera de última generación"
+            alt="Tecnología financiera de última generación - Visualización de servicios financieros modernos"
             fill
             priority
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
@@ -51,12 +51,15 @@ export const HeroSection = () => {
             }}
           />
           {imageLoading && (
-            <div className="absolute inset-0 flex items-center justify-center bg-blue-800 text-white">
-              <div>Cargando...</div>
+            <div className="absolute inset-0 flex items-center justify-center bg-blue-800 text-white" aria-live="polite">
+              <div role="status">
+                <span className="sr-only">Cargando imagen principal</span>
+                <div>Cargando...</div>
+              </div>
             </div>
           )}
           {imageError && (
-            <div className="absolute inset-0 flex items-center justify-center bg-blue-800 text-white text-center p-8">
+            <div className="absolute inset-0 flex items-center justify-center bg-blue-800 text-white text-center p-8" aria-live="polite">
               <div>
                 <h2 className="text-4xl font-bold mb-4">Tecnología financiera de última generación</h2>
                 <p className="text-xl">Impulsando el futuro de las finanzas</p>

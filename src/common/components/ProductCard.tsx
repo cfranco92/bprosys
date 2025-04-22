@@ -23,12 +23,15 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <article>
-      <Link href={`/product/${id}`} className="no-underline block h-full">
+      <Link href={`/product/${id}`} 
+          className="no-underline block h-full"
+          aria-labelledby={`product-title-${id}`}
+          title={`Ver detalles de ${name}`}>
         <Card interactive className="h-full">
-          <div className="relative w-full h-[180px] overflow-hidden bg-gray-100">
+          <div className="relative w-full h-[180px] overflow-hidden bg-gray-100" aria-hidden={imageError}>
             <Image
               src={imageUrl}
-              alt={name}
+              alt={`${name} - ${type}`}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className={`object-cover transition-opacity duration-300 ${imageLoading ? 'opacity-0' : 'opacity-100'}`}
@@ -39,13 +42,19 @@ export const ProductCard = ({ product }: ProductCardProps) => {
               }}
             />
             {imageLoading && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
-                <div>Cargando...</div>
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-100" aria-live="polite">
+                <div role="status">
+                  <span className="sr-only">Cargando imagen</span>
+                  <div>Cargando...</div>
+                </div>
               </div>
             )}
             {imageError && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-600 p-4">
-                <div>{name}</div>
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-600 p-4" aria-live="polite">
+                <div>
+                  <span className="sr-only">Error al cargar la imagen</span>
+                  {name}
+                </div>
               </div>
             )}
           </div>
@@ -54,14 +63,14 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             <Badge rounded className="mb-3">
               {formatCategoryName(category)}
             </Badge>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2 leading-tight">
+            <h3 id={`product-title-${id}`} className="text-xl font-semibold text-gray-800 mb-2 leading-tight">
               {name}
             </h3>
             <p className="text-sm text-gray-500 mb-4">
               {type}
             </p>
             
-            <div className="flex flex-col gap-2 mt-4">
+            <dl className="flex flex-col gap-2 mt-4">
               {interestRate !== undefined && (
                 <InfoRow 
                   label="Tasa de interés"
@@ -89,7 +98,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                   value={formatCurrency(product.monthlyFee)}
                 />
               )}
-            </div>
+            </dl>
           </Card.Body>
         </Card>
       </Link>

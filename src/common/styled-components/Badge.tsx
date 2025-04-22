@@ -6,7 +6,7 @@ import { BadgeProps } from '@/models';
 const StyledBadge = styled.span<{ $variant: string; $rounded: boolean }>`
   display: inline-block;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.5;
   padding: 0.25rem 0.5rem;
   border-radius: ${props => props.$rounded ? '9999px' : '0.25rem'};
@@ -16,27 +16,27 @@ const StyledBadge = styled.span<{ $variant: string; $rounded: boolean }>`
       case 'success':
         return `
           background-color: #d1fae5;
-          color: #065f46;
+          color: #047857;
         `;
       case 'warning':
         return `
           background-color: #fef3c7;
-          color: #92400e;
+          color: #7c2d12;
         `;
       case 'danger':
         return `
           background-color: #fee2e2;
-          color: #b91c1c;
+          color: #991b1b;
         `;
       case 'info':
         return `
           background-color: #dbeafe;
-          color: #1e40af;
+          color: #1e3a8a;
         `;
       default:
         return `
           background-color: #f3f4f6;
-          color: #1f2937;
+          color: #111827;
         `;
     }
   }}
@@ -48,11 +48,14 @@ export const Badge = ({
   rounded = false,
   className = ''
 }: BadgeProps) => {
+  const roleAttribute = variant === 'info' ? 'status' : undefined;
+  
   return (
     <StyledBadge
       $variant={variant}
       $rounded={rounded}
       className={className}
+      role={roleAttribute}
     >
       {children}
     </StyledBadge>

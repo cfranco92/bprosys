@@ -49,14 +49,15 @@ const StyledButton = styled.button<{
             background-color: #004494;
           }
           
-          &:focus {
+          &:focus-visible {
             outline: none;
-            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #0056b3;
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.4), 0 0 0 1px #0056b3;
           }
           
           &:disabled {
             background-color: #a3c4e7;
             cursor: not-allowed;
+            opacity: 0.7;
           }
         `;
       case 'secondary':
@@ -68,9 +69,14 @@ const StyledButton = styled.button<{
             background-color: #d1d5db;
           }
           
-          &:focus {
+          &:focus-visible {
             outline: none;
-            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #9ca3af;
+            box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.4), 0 0 0 1px #9ca3af;
+          }
+          
+          &:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
           }
         `;
       case 'outline':
@@ -83,9 +89,14 @@ const StyledButton = styled.button<{
             background-color: rgba(0, 86, 179, 0.04);
           }
           
-          &:focus {
+          &:focus-visible {
             outline: none;
-            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #0056b3;
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.4), 0 0 0 1px #0056b3;
+          }
+          
+          &:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
           }
         `;
       case 'white-outline':
@@ -98,9 +109,14 @@ const StyledButton = styled.button<{
             background-color: rgba(255, 255, 255, 0.25);
           }
           
-          &:focus {
+          &:focus-visible {
             outline: none;
-            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4), 0 0 0 1px white;
+          }
+          
+          &:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
           }
         `;
       default:

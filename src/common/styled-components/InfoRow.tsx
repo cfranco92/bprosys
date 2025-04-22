@@ -21,6 +21,8 @@ const Label = styled.dt`
 
 const Value = styled.dd`
   color: #1f2937;
+  margin-left: 0;
+  text-align: right;
 `;
 
 export const InfoRow = ({ 
