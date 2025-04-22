@@ -1,12 +1,11 @@
 import { notFound } from 'next/navigation';
-import Header from '@/common/components/Header';
-import Footer from '@/common/components/Footer';
+import MainLayout from '@/common/components/templates/MainLayout';
 import ProductDetail from '@/common/components/ProductDetail';
-import { mockProducts } from '@/data/mock-products';
-
+import { getProductById, getProducts } from '@/services/api';
 
 export async function generateStaticParams() {
-  return mockProducts.map((product) => ({
+  const products = await getProducts();
+  return products.map((product) => ({
     id: product.id,
   }));
 }
@@ -18,18 +17,15 @@ export default async function ProductDetailPage({
 }) {
   
   const { id } = await params;
-  const product = mockProducts.find((p) => p.id === id);
-  
+  const product = await getProductById(id);
   
   if (!product) {
     notFound();
   }
   
   return (
-    <main>
-      <Header />
+    <MainLayout>
       <ProductDetail product={product} />
-      <Footer />
-    </main>
+    </MainLayout>
   );
 } 

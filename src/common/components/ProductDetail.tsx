@@ -1,19 +1,29 @@
 'use client';
 
+import 'chart.js/auto';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import styled from 'styled-components';
+
 import { FinancialProduct } from '@/types';
 import { Button } from '@/common/styled-components/Button';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
-import Image from 'next/image';
-import { useState } from 'react';
 
-const Chart = dynamic(() => import('react-chartjs-2').then(mod => mod.Line), {
-  ssr: false,
-  loading: () => <div className="h-64 bg-gray-100 rounded-lg animate-pulse"></div>
-});
-
-import 'chart.js/auto';
+const Chart = dynamic(
+  () => import('react-chartjs-2').then((mod) => mod.Line),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-64 bg-gray-100 rounded-lg animate-pulse">
+        <div className="flex h-full items-center justify-center text-gray-500">
+          Cargando gráfica...
+        </div>
+      </div>
+    ),
+  }
+);
 
 interface ProductDetailProps {
   product: FinancialProduct;
@@ -221,7 +231,7 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
     datasets: [
       {
         label: 'Rendimiento (%)',
-        data: performance || [0, 0, 0, 0, 0, 0],
+        data: Array.isArray(performance) ? performance : [0, 0, 0, 0, 0, 0],
         borderColor: '#0056b3',
         backgroundColor: 'rgba(0, 86, 179, 0.1)',
         tension: 0.4,
@@ -309,11 +319,15 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
             ))}
           </BenefitsList>
           
-          {performance && performance.length > 0 && (
+          {performance && performance.length > 0 ? (
             <ChartContainer>
               <ChartTitle>Rendimiento histórico</ChartTitle>
               <Chart data={chartData} options={chartOptions} />
             </ChartContainer>
+          ) : (
+            <div className="mt-4 p-4 bg-gray-100 rounded-lg">
+              <p className="text-gray-600">Este producto no tiene datos de rendimiento histórico.</p>
+            </div>
           )}
         </MainContent>
         
