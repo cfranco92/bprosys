@@ -9,5 +9,5 @@ export { default as HeroSection } from "./HeroSection";
 export { default as AboutSection } from "./AboutSection";
 export { default as ProductsSection } from "./ProductsSection";
 
-// Templates
+
 export { default as MainLayout } from "./templates/MainLayout";

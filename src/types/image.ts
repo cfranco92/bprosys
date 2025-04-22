@@ -1,4 +1,3 @@
-// Resultado del hook useImageLoader
 export interface UseImageLoaderResult {
   imageLoading: boolean;
   imageError: boolean;
@@ -6,7 +5,6 @@ export interface UseImageLoaderResult {
   handleImageError: () => void;
 }
 
-// Props para el componente ProductImage
 export interface ProductImageProps {
   imageUrl: string;
   name: string;
