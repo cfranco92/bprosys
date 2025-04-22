@@ -131,7 +131,7 @@ As we evolve the codebase:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/bprosys.git
+   git clone https://github.com/cfranco92/bprosys.git
    cd bprosys
    ```
 
@@ -175,6 +175,8 @@ As we evolve the codebase:
 ```
 bprosys/
 ├── public/               # Static files
+│   ├── images/           # Image assets
+│   └── svgs/             # SVG files
 ├── src/
 │   ├── app/              # Next.js App Router routes
 │   │   ├── page.tsx      # Main page
@@ -185,6 +187,11 @@ bprosys/
 │   ├── common/           # Shared components
 │   │   ├── components/   # Page/functional components
 │   │   │   ├── templates/# Page templates
+│   │   │   ├── icons/    # SVG icons as React components
+│   │   │   │   ├── MenuIcon.tsx    # Menu hamburger icon
+│   │   │   │   ├── CloseIcon.tsx   # Close X icon
+│   │   │   │   ├── ArrowLeftIcon.tsx # Arrow left navigation
+│   │   │   │   └── index.ts        # Icons barrel file
 │   │   │   ├── ProductCard.tsx       # Product card component
 │   │   │   ├── ProductDetail.tsx     # Product detail component
 │   │   │   ├── ProductChart.tsx      # Chart component for products
@@ -202,6 +209,10 @@ bprosys/
 │   │       ├── InfoRow.tsx    # Information row component
 │   │       ├── Section.tsx    # Section container component
 │   │       └── CategoryTabs.tsx # Category tabs component
+│   ├── context/          # React Context providers
+│   │   └── ProductContext.tsx # Context for product state management
+│   ├── providers/        # App providers
+│   │   └── StyledComponentsRegistry.tsx # Registry for Styled Components SSR
 │   ├── hooks/            # Custom React hooks
 │   │   ├── useProducts.ts      # Hook for product filtering
 │   │   ├── useChartData.ts     # Hook for chart data
@@ -218,9 +229,12 @@ bprosys/
 │   ├── services/         # External services integration
 │   │   ├── products.ts         # Product-related services
 │   │   └── index.ts            # Services barrel file
+│   ├── utils/            # Utility functions
+│   │   ├── formatters.ts       # Data formatting utilities
+│   │   └── index.ts            # Utils barrel file
 │   └── data/             # Mock data for development
 │       └── mock-products.ts    # Mock product data
-├── tailwind.config.js    # Tailwind CSS configuration
+├── tailwind.config.ts    # Tailwind CSS configuration
 ├── next.config.ts        # Next.js configuration
 ├── postcss.config.mjs    # PostCSS configuration
 ├── eslint.config.mjs     # ESLint configuration
