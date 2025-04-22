@@ -4,15 +4,12 @@ export function useChartData({
   category,
   performance = [],
 }: UseChartDataProps): UseChartDataResult {
-  // Limitar a los últimos 6 meses para las etiquetas
   const labels = Array.from({ length: 6 }, (_, i) => {
     const date = new Date();
     date.setMonth(date.getMonth() - (5 - i));
     return date.toLocaleDateString("es-ES", { month: "short" });
   });
 
-  // Usar los datos de rendimiento proporcionados o generar datos aleatorios
-  // Asegurarnos de limitar a 6 elementos para mantener consistencia con las etiquetas
   const data =
     performance.length > 0
       ? performance.slice(0, 6)

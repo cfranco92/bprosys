@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import { useChartData } from "@/hooks/useChartData";
 import { ProductChartProps } from "@/types";
 
-// Importando Chart.js de manera dinámica para evitar problemas de SSR
 const Chart = dynamic(() => import("react-chartjs-2").then((mod) => mod.Line), {
   ssr: false,
   loading: () => (
@@ -16,7 +15,6 @@ const Chart = dynamic(() => import("react-chartjs-2").then((mod) => mod.Line), {
   ),
 });
 
-// Registrar los componentes necesarios de Chart.js solo una vez
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -28,7 +26,6 @@ import {
   Legend,
 } from "chart.js";
 
-// Registrar solo los componentes necesarios
 ChartJS.register(
   CategoryScale,
   LinearScale,
