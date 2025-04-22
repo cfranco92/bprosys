@@ -118,22 +118,22 @@ export const Footer = () => {
 
         <div className="mb-8 md:mb-0">
           <h4 className="text-lg font-semibold text-gray-800 mb-4">Empresa</h4>
-          <Link href="/about" className="no-underline">
+          <Link href="/#about" prefetch={false} className="no-underline">
             <span className="block text-gray-600 py-2 text-sm hover:text-blue-700 cursor-pointer">
               Nosotros
             </span>
           </Link>
-          <Link href="/careers" className="no-underline">
+          <Link href="/#careers" prefetch={false} className="no-underline">
             <span className="block text-gray-600 py-2 text-sm hover:text-blue-700 cursor-pointer">
               Trabaja con nosotros
             </span>
           </Link>
-          <Link href="/blog" className="no-underline">
+          <Link href="/#blog" prefetch={false} className="no-underline">
             <span className="block text-gray-600 py-2 text-sm hover:text-blue-700 cursor-pointer">
               Blog
             </span>
           </Link>
-          <Link href="/contact" className="no-underline">
+          <Link href="/#contacto" prefetch={false} className="no-underline">
             <span className="block text-gray-600 py-2 text-sm hover:text-blue-700 cursor-pointer">
               Contacto
             </span>
@@ -142,17 +142,17 @@ export const Footer = () => {
 
         <div className="mb-8 md:mb-0">
           <h4 className="text-lg font-semibold text-gray-800 mb-4">Legal</h4>
-          <Link href="/privacy" className="no-underline">
+          <Link href="/#privacy" prefetch={false} className="no-underline">
             <span className="block text-gray-600 py-2 text-sm hover:text-blue-700 cursor-pointer">
               Política de privacidad
             </span>
           </Link>
-          <Link href="/terms" className="no-underline">
+          <Link href="/#terms" prefetch={false} className="no-underline">
             <span className="block text-gray-600 py-2 text-sm hover:text-blue-700 cursor-pointer">
               Términos y condiciones
             </span>
           </Link>
-          <Link href="/cookies" className="no-underline">
+          <Link href="/#cookies" prefetch={false} className="no-underline">
             <span className="block text-gray-600 py-2 text-sm hover:text-blue-700 cursor-pointer">
               Política de cookies
             </span>
