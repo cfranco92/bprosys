@@ -1,7 +1,7 @@
 'use client';
 
 import { InfoRow } from '@/common/styled-components';
-import { ProductInfoProps } from '@/models';
+import { ProductInfoProps } from '@/types';
 import { formatCurrency, formatPercentage, formatCategoryName } from '@/utils';
 
 export const ProductInfo = ({ product }: ProductInfoProps) => {

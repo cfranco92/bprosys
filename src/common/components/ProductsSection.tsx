@@ -3,7 +3,7 @@
 import { ProductCard } from '@/common/components';
 import { CategoryTabs, Section } from '@/common/styled-components';
 import { useProducts } from '@/hooks/useProducts';
-import { ProductCategory } from '@/models';
+import { ProductCategory } from '@/types';
 
 export const ProductsSection = () => {
   const { 

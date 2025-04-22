@@ -2,7 +2,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { CategoryTabsProps } from '@/models';
+import { CategoryTabsProps } from '@/types';
 
 const TabContainer = styled.div`
   display: flex;

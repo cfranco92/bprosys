@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useState, useContext, useEffect, ReactNode } from 'react';
-import { FinancialProduct, ProductCategory, ProductContextType } from '@/models';
+import { FinancialProduct, ProductCategory, ProductContextType } from '@/types';
 import { getProducts } from '@/services/api';
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);

@@ -3,7 +3,7 @@
 import 'chart.js/auto';
 import Link from 'next/link';
 
-import { ProductDetailProps } from '@/models';
+import { ProductDetailProps } from '@/types';
 import { Button, Badge } from '@/common/styled-components';
 import { formatCategoryName } from '@/utils';
 import ProductImage from './ProductImage';

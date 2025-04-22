@@ -2,7 +2,7 @@
 
 import { forwardRef } from 'react';
 import styled from 'styled-components';
-import { ButtonProps } from '@/models';
+import { ButtonProps } from '@/types';
 
 const StyledButton = styled.button<{ 
   $variant: string; 

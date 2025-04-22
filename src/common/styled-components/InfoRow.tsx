@@ -1,7 +1,7 @@
 'use client';
 
 import styled from 'styled-components';
-import { InfoRowProps } from '@/models';
+import { InfoRowProps } from '@/types';
 
 const Row = styled.div`
   display: flex;

@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { UseImageLoaderResult } from '@/models';
+import { UseImageLoaderResult } from '@/types';
 
 export const useImageLoader = (): UseImageLoaderResult => {
   const [imageLoading, setImageLoading] = useState(true);

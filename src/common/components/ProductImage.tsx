@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useImageLoader } from '@/hooks/useImageLoader';
-import { ProductImageProps } from '@/models';
+import { ProductImageProps } from '@/types';
 
 export const ProductImage = ({ imageUrl, name, type, className = '' }: ProductImageProps) => {
   const { imageLoading, imageError, handleImageLoad, handleImageError } = useImageLoader();

@@ -206,7 +206,7 @@ bprosys/
 │   │   ├── useChartData.ts     # Hook for chart data
 │   │   ├── useImageLoader.ts   # Hook for image loading states
 │   │   └── index.ts            # Hooks barrel file
-│   ├── models/           # TypeScript type definitions
+│   ├── types/            # TypeScript type definitions
 │   │   ├── domain-types.ts     # Domain-specific types
 │   │   ├── entities.ts         # Entity interfaces
 │   │   ├── component-props.ts  # Component props interfaces
@@ -215,8 +215,7 @@ bprosys/
 │   │   ├── image.ts            # Image-related types
 │   │   └── index.ts            # Types barrel file
 │   ├── services/         # External services integration
-│   ├── data/             # Mock data for development
-│   └── constants/        # Application constants
+│   └── data/             # Mock data for development
 ├── tailwind.config.js    # Tailwind CSS configuration
 ├── next.config.ts        # Next.js configuration
 ├── postcss.config.mjs    # PostCSS configuration

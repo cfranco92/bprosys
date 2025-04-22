@@ -1,7 +1,7 @@
 'use client';
 
 import styled from 'styled-components';
-import { BadgeProps } from '@/models';
+import { BadgeProps } from '@/types';
 
 const StyledBadge = styled.span<{ $variant: string; $rounded: boolean }>`
   display: inline-block;

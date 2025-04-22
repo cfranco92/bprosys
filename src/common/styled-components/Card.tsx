@@ -1,7 +1,7 @@
 'use client';
 
 import styled from 'styled-components';
-import { CardProps, CardBodyProps } from '@/models';
+import { CardProps, CardBodyProps } from '@/types';
 
 const StyledCard = styled.div<{ $interactive?: boolean }>`
   background-color: white;

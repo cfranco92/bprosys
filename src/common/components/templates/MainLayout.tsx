@@ -1,6 +1,6 @@
 'use client';
 
-import { MainLayoutProps } from '@/models';
+import { MainLayoutProps } from '@/types';
 import Header from '@/common/components/Header';
 import Footer from '@/common/components/Footer';
 import { ProductProvider } from '@/context/ProductContext';

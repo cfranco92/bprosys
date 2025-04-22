@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
-import { ProductCardProps } from '@/models';
+import { ProductCardProps } from '@/types';
 import { Card, Badge, InfoRow } from '@/common/styled-components';
 import { formatCategoryName, formatCurrency, formatPercentage } from '@/utils';
 

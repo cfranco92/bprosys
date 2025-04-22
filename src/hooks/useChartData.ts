@@ -1,4 +1,4 @@
-import { UseChartDataProps, UseChartDataResult } from '@/models/charts';
+import { UseChartDataProps, UseChartDataResult } from '@/types/charts';
 
 export function useChartData({ category, performance = [] }: UseChartDataProps): UseChartDataResult {
   // Generar etiquetas (últimos 12 meses)

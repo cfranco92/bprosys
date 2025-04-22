@@ -3,7 +3,7 @@
 import 'chart.js/auto';
 import dynamic from 'next/dynamic';
 import { useChartData } from '@/hooks/useChartData';
-import { ProductChartProps } from '@/models';
+import { ProductChartProps } from '@/types';
 
 const Chart = dynamic(
   () => import('react-chartjs-2').then((mod) => mod.Line),
