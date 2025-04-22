@@ -17,6 +17,7 @@ const StyledButton = styled.button<{
   transition: all 0.2s;
   white-space: nowrap;
   width: ${props => props.$fullWidth ? '100%' : 'auto'};
+  cursor: pointer;
   
   ${props => {
     switch (props.$size) {

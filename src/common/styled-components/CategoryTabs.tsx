@@ -30,6 +30,7 @@ const Tab = styled.button<{ $active: boolean }>`
   white-space: nowrap;
   transition: all 0.2s ease;
   outline: none;
+  cursor: pointer;
 
   ${props => props.$active
     ? `
