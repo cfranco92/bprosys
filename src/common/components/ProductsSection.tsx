@@ -1,34 +1,30 @@
-'use client';
+"use client";
 
-import { ProductCard } from '@/common/components';
-import { CategoryTabs, Section } from '@/common/styled-components';
-import { useProducts } from '@/hooks/useProducts';
-import { ProductCategory } from '@/types';
+import { ProductCard } from "@/common/components";
+import { CategoryTabs, Section } from "@/common/styled-components";
+import { useProducts } from "@/hooks/useProducts";
+import { ProductCategory } from "@/types";
 
 export const ProductsSection = () => {
-  const { 
-    products, 
-    categories, 
-    selectedCategory, 
-    setSelectedCategory 
-  } = useProducts();
+  const { products, categories, selectedCategory, setSelectedCategory } =
+    useProducts();
 
-  const handleCategoryChange = (category: ProductCategory | 'all') => {
+  const handleCategoryChange = (category: ProductCategory | "all") => {
     setSelectedCategory(category);
   };
 
   return (
-    <Section 
+    <Section
       id="productos"
       title="Nuestros productos financieros"
       description="Encuentra la solución que mejor se adapte a tus necesidades con nuestra amplia gama de productos financieros diseñados para cada tipo de cliente."
     >
-      <CategoryTabs 
+      <CategoryTabs
         categories={categories}
         selectedCategory={selectedCategory}
         onSelectCategory={handleCategoryChange}
       />
-      
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
@@ -38,4 +34,4 @@ export const ProductsSection = () => {
   );
 };
 
-export default ProductsSection; 
+export default ProductsSection;

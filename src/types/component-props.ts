@@ -1,7 +1,7 @@
-import { ReactNode, ButtonHTMLAttributes } from 'react';
-import { ImageProps } from 'next/image';
-import { FinancialProduct } from './entities';
-import { ProductCategory } from './domain-types';
+import { ReactNode, ButtonHTMLAttributes } from "react";
+import { ImageProps } from "next/image";
+import { FinancialProduct } from "./entities";
+import { ProductCategory } from "./domain-types";
 
 export interface MainLayoutProps {
   children: ReactNode;
@@ -17,15 +17,15 @@ export interface SectionProps {
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  variant?: 'primary' | 'secondary' | 'outline' | 'white-outline';
-  size?: 'small' | 'medium' | 'large';
+  variant?: "primary" | "secondary" | "outline" | "white-outline";
+  size?: "small" | "medium" | "large";
   fullWidth?: boolean;
   className?: string;
 }
 
 export interface BadgeProps {
   children: ReactNode;
-  variant?: 'default' | 'success' | 'warning' | 'danger' | 'info';
+  variant?: "default" | "success" | "warning" | "danger" | "info";
   rounded?: boolean;
   className?: string;
 }
@@ -46,7 +46,7 @@ export interface InfoRowProps {
   className?: string;
 }
 
-export interface ImageWithFallbackProps extends Omit<ImageProps, 'onError'> {
+export interface ImageWithFallbackProps extends Omit<ImageProps, "onError"> {
   fallbackSrc?: string;
 }
 
@@ -64,6 +64,6 @@ export interface ProductInfoProps {
 
 export interface CategoryTabsProps {
   categories: ProductCategory[];
-  selectedCategory: ProductCategory | 'all';
-  onSelectCategory: (category: ProductCategory | 'all') => void;
-} 
+  selectedCategory: ProductCategory | "all";
+  onSelectCategory: (category: ProductCategory | "all") => void;
+}

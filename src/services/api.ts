@@ -10,11 +10,11 @@ export const getProducts = async (): Promise<FinancialProduct[]> => {
 };
 
 export const getProductById = async (
-  id: string
+  id: string,
 ): Promise<FinancialProduct | null> => {
   return new Promise((resolve) => {
     const product = mockProducts.find((p) => p.id === id) || null;
-    
+
     setTimeout(() => {
       resolve(product);
     }, 300);

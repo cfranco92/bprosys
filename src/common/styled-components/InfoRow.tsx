@@ -1,14 +1,15 @@
-'use client';
+"use client";
 
-import styled from 'styled-components';
-import { InfoRowProps } from '@/types';
+import React from "react";
+import styled from "styled-components";
+import { InfoRowProps } from "@/types";
 
-const Row = styled.div`
+const Container = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 0;
   border-bottom: 1px solid #e5e7eb;
-  
+
   &:last-child {
     border-bottom: none;
   }
@@ -25,17 +26,17 @@ const Value = styled.dd`
   text-align: right;
 `;
 
-export const InfoRow = ({ 
-  label, 
+export const InfoRow: React.FC<InfoRowProps> = ({
+  label,
   value,
-  className = ''
-}: InfoRowProps) => {
+  className = "",
+}) => {
   return (
-    <Row className={className}>
+    <Container className={className}>
       <Label>{label}</Label>
       <Value>{value}</Value>
-    </Row>
+    </Container>
   );
 };
 
-export default InfoRow; 
+export default InfoRow;

@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { forwardRef } from 'react';
-import styled from 'styled-components';
-import { ButtonProps } from '@/types';
+import { forwardRef } from "react";
+import styled from "styled-components";
+import { ButtonProps } from "@/types";
 
-const StyledButton = styled.button<{ 
-  $variant: string; 
-  $size: string; 
-  $fullWidth: boolean 
+const StyledButton = styled.button<{
+  $variant: string;
+  $size: string;
+  $fullWidth: boolean;
 }>`
   display: inline-flex;
   align-items: center;
@@ -16,17 +16,17 @@ const StyledButton = styled.button<{
   border-radius: 0.375rem;
   transition: all 0.2s;
   white-space: nowrap;
-  width: ${props => props.$fullWidth ? '100%' : 'auto'};
+  width: ${(props) => (props.$fullWidth ? "100%" : "auto")};
   cursor: pointer;
-  
-  ${props => {
+
+  ${(props) => {
     switch (props.$size) {
-      case 'small':
+      case "small":
         return `
           padding: 0.375rem 0.75rem;
           font-size: 0.875rem;
         `;
-      case 'large':
+      case "large":
         return `
           padding: 0.75rem 1.5rem;
           font-size: 1rem;
@@ -38,10 +38,10 @@ const StyledButton = styled.button<{
         `;
     }
   }}
-  
-  ${props => {
+
+  ${(props) => {
     switch (props.$variant) {
-      case 'primary':
+      case "primary":
         return `
           background-color: #0056b3;
           color: white;
@@ -61,7 +61,7 @@ const StyledButton = styled.button<{
             opacity: 0.7;
           }
         `;
-      case 'secondary':
+      case "secondary":
         return `
           background-color: #e5e7eb;
           color: #1f2937;
@@ -80,7 +80,7 @@ const StyledButton = styled.button<{
             cursor: not-allowed;
           }
         `;
-      case 'outline':
+      case "outline":
         return `
           background-color: transparent;
           color: #0056b3;
@@ -100,7 +100,7 @@ const StyledButton = styled.button<{
             cursor: not-allowed;
           }
         `;
-      case 'white-outline':
+      case "white-outline":
         return `
           background-color: rgba(255, 255, 255, 0.15);
           color: white;
@@ -121,33 +121,38 @@ const StyledButton = styled.button<{
           }
         `;
       default:
-        return '';
+        return "";
     }
   }}
 `;
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
-  children,
-  variant = 'primary',
-  size = 'medium',
-  fullWidth = false,
-  className = '',
-  ...props
-}, ref) => {
-  return (
-    <StyledButton
-      ref={ref}
-      $variant={variant}
-      $size={size}
-      $fullWidth={fullWidth}
-      className={className}
-      {...props}
-    >
-      {children}
-    </StyledButton>
-  );
-});
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      children,
+      variant = "primary",
+      size = "medium",
+      fullWidth = false,
+      className = "",
+      ...props
+    },
+    ref,
+  ) => {
+    return (
+      <StyledButton
+        ref={ref}
+        $variant={variant}
+        $size={size}
+        $fullWidth={fullWidth}
+        className={className}
+        {...props}
+      >
+        {children}
+      </StyledButton>
+    );
+  },
+);
 
-Button.displayName = 'Button';
+Button.displayName = "Button";
 
-export default Button; 
+export default Button;

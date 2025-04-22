@@ -1,4 +1,4 @@
-import { ProductCategory, RiskLevel } from './domain-types';
+import { ProductCategory, RiskLevel } from "./domain-types";
 
 export interface FinancialProduct {
   id: string;
@@ -15,4 +15,4 @@ export interface FinancialProduct {
   monthlyFee?: number;
   annualFee?: number;
   performance?: number[];
-} 
+}

@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import styled from 'styled-components';
-import { ReactNode } from 'react';
+import styled from "styled-components";
+import { ReactNode } from "react";
 
 interface SectionProps {
   id?: string;
@@ -13,7 +13,7 @@ interface SectionProps {
 
 const SectionContainer = styled.section`
   padding: 4rem 1rem;
-  
+
   @media (min-width: 768px) {
     padding: 5rem 2rem;
   }
@@ -34,7 +34,7 @@ const SectionTitle = styled.h2`
   font-weight: 700;
   color: #1f2937;
   margin-bottom: 1rem;
-  
+
   @media (min-width: 768px) {
     font-size: 2.25rem;
   }
@@ -53,7 +53,7 @@ export const Section = ({
   title,
   description,
   children,
-  className = ''
+  className = "",
 }: SectionProps) => {
   return (
     <SectionContainer id={id} className={className}>
@@ -64,11 +64,11 @@ export const Section = ({
             <SectionDescription>{description}</SectionDescription>
           )}
         </SectionHeader>
-        
+
         {children}
       </SectionContent>
     </SectionContainer>
   );
 };
 
-export default Section; 
+export default Section;

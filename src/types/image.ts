@@ -12,4 +12,4 @@ export interface ProductImageProps {
   name: string;
   type: string;
   className?: string;
-} 
+}

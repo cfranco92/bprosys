@@ -1,9 +1,9 @@
-export type ProductCategory = 
-  | 'cuenta' 
-  | 'tarjeta' 
-  | 'fondo' 
-  | 'seguro' 
-  | 'préstamo' 
-  | 'inversión';
+export type ProductCategory =
+  | "cuenta"
+  | "tarjeta"
+  | "fondo"
+  | "seguro"
+  | "préstamo"
+  | "inversión";
 
-export type RiskLevel = 'bajo' | 'medio' | 'alto'; 
+export type RiskLevel = "bajo" | "medio" | "alto";

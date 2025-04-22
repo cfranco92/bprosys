@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import styled from 'styled-components';
-import { CardProps, CardBodyProps } from '@/types';
+import styled from "styled-components";
+import { CardProps, CardBodyProps } from "@/types";
 
 const StyledCard = styled.div<{ $interactive?: boolean }>`
   background-color: white;
@@ -10,8 +10,10 @@ const StyledCard = styled.div<{ $interactive?: boolean }>`
   overflow: hidden;
   transition: all 0.2s ease;
   height: 100%;
-  
-  ${props => props.$interactive && `
+
+  ${(props) =>
+    props.$interactive &&
+    `
     cursor: pointer;
     &:hover {
       transform: translateY(-2px);
@@ -24,34 +26,23 @@ const StyledCardBody = styled.div`
   padding: 1.25rem;
 `;
 
-export const Card = ({ 
-  children, 
-  interactive, 
-  className = '',
-  ...props 
+export const Card = ({
+  children,
+  interactive,
+  className = "",
+  ...props
 }: CardProps & { interactive?: boolean }) => {
   return (
-    <StyledCard 
-      $interactive={interactive}
-      className={className}
-      {...props}
-    >
+    <StyledCard $interactive={interactive} className={className} {...props}>
       {children}
     </StyledCard>
   );
 };
 
-const CardBody = ({ 
-  children,
-  className = '' 
-}: CardBodyProps) => {
-  return (
-    <StyledCardBody className={className}>
-      {children}
-    </StyledCardBody>
-  );
+const CardBody = ({ children, className = "" }: CardBodyProps) => {
+  return <StyledCardBody className={className}>{children}</StyledCardBody>;
 };
 
 Card.Body = CardBody;
 
-export default Card; 
+export default Card;

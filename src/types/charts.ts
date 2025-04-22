@@ -1,8 +1,14 @@
 // Tipos para los datos del gráfico
 export type ChartDataPoint = number;
 
-export type ChartLegendPosition = 'top' | 'right' | 'bottom' | 'left' | 'center' | 'chartArea';
-export type ChartTooltipMode = 'index' | 'point' | 'nearest' | 'dataset';
+export type ChartLegendPosition =
+  | "top"
+  | "right"
+  | "bottom"
+  | "left"
+  | "center"
+  | "chartArea";
+export type ChartTooltipMode = "index" | "point" | "nearest" | "dataset";
 
 // Props para el hook useChartData
 export interface UseChartDataProps {
@@ -51,4 +57,4 @@ export interface UseChartDataResult {
 export interface ProductChartProps {
   category: string;
   performance?: ChartDataPoint[];
-} 
+}

@@ -1,11 +1,17 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { useImageLoader } from '@/hooks/useImageLoader';
-import { ProductImageProps } from '@/types';
+import Image from "next/image";
+import { useImageLoader } from "@/hooks/useImageLoader";
+import { ProductImageProps } from "@/types";
 
-export const ProductImage = ({ imageUrl, name, type, className = '' }: ProductImageProps) => {
-  const { imageLoading, imageError, handleImageLoad, handleImageError } = useImageLoader();
+export const ProductImage = ({
+  imageUrl,
+  name,
+  type,
+  className = "",
+}: ProductImageProps) => {
+  const { imageLoading, imageError, handleImageLoad, handleImageError } =
+    useImageLoader();
 
   return (
     <div className={`relative overflow-hidden rounded-2xl ${className}`}>
@@ -15,7 +21,7 @@ export const ProductImage = ({ imageUrl, name, type, className = '' }: ProductIm
         fill
         priority
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-        className={`object-cover transition-opacity duration-300 ${imageLoading ? 'opacity-0' : 'opacity-100'}`}
+        className={`object-cover transition-opacity duration-300 ${imageLoading ? "opacity-0" : "opacity-100"}`}
         onLoad={handleImageLoad}
         onError={handleImageError}
       />
@@ -36,4 +42,4 @@ export const ProductImage = ({ imageUrl, name, type, className = '' }: ProductIm
   );
 };
 
-export default ProductImage; 
+export default ProductImage;
